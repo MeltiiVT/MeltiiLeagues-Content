@@ -347,3 +347,6 @@ scope=perm
 
 [ring_of_forging]
 scope=perm
+
+[chosen_combat_style_buff]
+scope=perm

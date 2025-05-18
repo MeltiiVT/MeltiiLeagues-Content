@@ -51,9 +51,9 @@ if (npc_param(defend_sound) ! null) {
 }
 // set the skill clock depending on the weapon attack rate
 if ($weapon = null) {
-    %action_delay = add(map_clock, 4);
+    %action_delay = add(map_clock, 2);
 } else {
-    %action_delay = add(map_clock, oc_param($weapon, attackrate));
+    %action_delay = add(map_clock, divide(oc_param($weapon, attackrate),2));
 }
 
 p_opnpc(2);

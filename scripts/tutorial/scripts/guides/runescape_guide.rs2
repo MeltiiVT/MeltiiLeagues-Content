@@ -7,15 +7,35 @@ switch_int(%tutorial_progress) {
     case default : @runescape_guide_return;
 }
 
+// Player variables for combat style choice:
+// %tutorial_style_selected (boolean): Tracks if this choice has been made. Defaults to false.
+// %chosen_combat_style_buff (int): Stores the chosen style (0=none, 1=Melee, 2=Ranged, 3=Magic). Defaults to 0.
+
+// Assumed constants for combat styles (ensure these are defined):
+// ^combat_style_melee = 1;
+// ^combat_style_ranged = 2;
+// ^combat_style_magic = 3;
+
 [label,runescape_guide_welcome]
-if (map_production = false) {
+    ~chatnpc("<p,neutral>Greetings! Before we begin with the main tutorial, you have an important choice.");
+    ~chatnpc("<p,neutral>You can select a preferred combat style. This choice is permanent and will enhance your attack speed in that style, completing this part of your training.");
+    ~chatnpc("<p,neutral>Please choose wisely, as this cannot be reverted.");
+
+    def_int $choiceCmb = ~p_choice3("Melee - Master close-quarters combat.", 1, "Ranged - Strike foes from a distance.", 2, "Magic - Unleash powerful spells.", 3);
+    //if ($choiceCmb = 1) {
+ //       %chosen_combat_style_buff = ^combat_style_melee;
+  //  } else if ($choiceCmb = 2) {
+  //      %chosen_combat_style_buff = ^combat_style_ranged;
+  //  } else if ($choiceCmb = 3) {
+  //      %chosen_combat_style_buff = ^combat_style_magic;
+  //  }
+
     ~chatnpc("<p,neutral>Do you want to skip the tutorial?");
     def_int $choice = ~p_choice2("Yes please.", 1, "No, thank you.", 2);
     if ($choice = 1) {
         %tutorial_progress = ^tutorial_complete;
         @tutorial_complete;
     }
-}
 
 ~chatnpc("<p,neutral>Greetings! I see you are a new arrival to this land. My|job is to welcome all the new visitors. So welcome!");
 ~chatnpc("<p,neutral>You have already learnt the first thing needed to|succeed in this world... Talking to other people!");

@@ -1511,7 +1511,13 @@ $final_obj, $anim, $spotanim, $sound = ~magic_spell_search_convertobj($spell_dat
 facesquare(loc_coord);
 p_delay(0);
 inv_del(inv, stafforb, 1);
-~delete_spell_runes($spell_data);
+if (%chosen_combat_style_buff = 3) {
+    if (random(10) = 0) { // 1 out of 10 chance
+        ~delete_spell_runes($spell_data);
+    }
+} else {
+    ~delete_spell_runes($spell_data);
+}
 ~give_spell_xp($spell_data);
 anim($anim, 0);
 spotanim_pl($spotanim, 92, 0);

@@ -22,7 +22,13 @@ if (p_finduid(uid) = true) {
     anim(human_casting, 0);
     spotanim_pl(teleport_casting, 128, 32);
     sound_synth(charge, 0, 0);
+if (%chosen_combat_style_buff = 3) {
+    if (random(10) = 0) { // 1 out of 10 chance
+        ~delete_spell_runes($spell_data);
+    }
+} else {
     ~delete_spell_runes($spell_data);
+}
     ~give_spell_xp($spell_data);
 }
 

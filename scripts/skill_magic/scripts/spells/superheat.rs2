@@ -43,7 +43,13 @@ sound_synth(superheat_all, 0, 0);
 spotanim_pl(superheatitem_casting, 92, 0);
 anim(human_castsuperheatitem, 0);
 // delete runes and give xp
-~delete_spell_runes($spell_data);
+if (%chosen_combat_style_buff = 3) {
+    if (random(10) = 0) { // 1 out of 10 chance
+        ~delete_spell_runes($spell_data);
+    }
+} else {
+    ~delete_spell_runes($spell_data);
+}
 ~give_spell_xp($spell_data);
 def_int $smith_xp = struct_param($bar_struct, productexp);
 if ($bar = gold_bar & inv_total(worn, gauntlets_of_goldsmithing) > 0) {

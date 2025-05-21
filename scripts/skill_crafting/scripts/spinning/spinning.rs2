@@ -34,7 +34,6 @@ inv_del(inv, struct_param($struct, ingredient), 1);
 inv_add(inv, struct_param($struct, product), 1);
 mes(struct_param($struct, processmessage));
 stat_advance(crafting, struct_param($struct, productexp));
-p_delay(3);
 //weakqueue(crafting_spinning, 2, $struct);
 
 /**

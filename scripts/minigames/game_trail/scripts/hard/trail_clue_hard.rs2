@@ -28,6 +28,11 @@ inv_add(inv, $puzzle, 1);
 inv_del(inv, $current_clue, 1);
 if(~trail_clue_hard_complete = true) {
     ~trail_clue_hard_reward;
+    %hard_clues_completed = calc(%hard_clues_completed + 1);
+    mes("You've now completed <tostring(%hard_clues_completed)> Hard Clues.");
+    %clue_points = calc(%clue_points + 3);
+    // Message the player about the points earned and their new total
+    mes("You've earned <tostring(3)> Clue points. You now have <tostring(%clue_points)> Clue points.");
 } else {
     def_namedobj $new_clue = ~trail_clue_hard_getrandom;
     inv_add(inv, $new_clue, 1);

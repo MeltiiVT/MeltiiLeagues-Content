@@ -350,3 +350,15 @@ scope=perm
 
 [chosen_combat_style_buff]
 scope=perm
+
+[clue_points]
+scope=perm
+
+[easy_clues_completed]
+scope=perm
+
+[medium_clues_completed]
+scope=perm
+
+[hard_clues_completed]
+scope=perm

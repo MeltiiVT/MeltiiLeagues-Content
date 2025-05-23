@@ -94,8 +94,6 @@ if (p_finduid(uid) = true) {
     }
 }
 
-//~trail_skillingcluedrop(1000);
-
 [opobj3,_trail_challenge]
 if(inv_totalcat(inv, trail_challenge) > 0 | inv_totalcat(bank, trail_challenge) > 0) {
     mes("You already have a challenge scroll."); // OSRS

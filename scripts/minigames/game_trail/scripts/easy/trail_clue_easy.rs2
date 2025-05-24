@@ -18,7 +18,6 @@ if(~trail_clue_easy_complete = true) {
     %easy_clues_completed = calc(%easy_clues_completed + 1);
     mes("You've now completed <tostring(%easy_clues_completed)> Easy Clues.");
     %clue_points = calc(%clue_points + 1);
-    // Message the player about the points earned and their new total
     mes("You've earned <tostring(1)> Clue point. You now have <tostring(%clue_points)> Clue points.");
     
 } else {

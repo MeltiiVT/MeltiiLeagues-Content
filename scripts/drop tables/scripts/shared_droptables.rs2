@@ -137,7 +137,7 @@ if ($random < 8) {
 } else if ($random < 19) {
     return (dragon_spear, 1);
 } else { // osrs
-    obj_add(npc_coord, burnt_lobster, ^lootdrop_duration);
+    return(burnt_lobster, 1);
 }
 
 [proc,kbd_megararetable]()(namedobj, int)

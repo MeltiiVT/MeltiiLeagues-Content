@@ -1030,6 +1030,8 @@
 [command,gettimespent](int $unit)(int)
 // info: Print a message on the server
 [command,console](string $text)
+// info: Broadcasts a message to all players in the game.
+[command,mes_broadcast](string $message)
 
 // [command,inv_setvar](inv $inv, int $slot, obj $obj, int $value)
 // [command,inv_getvar](inv $inv, int $slot, obj $obj)(int)

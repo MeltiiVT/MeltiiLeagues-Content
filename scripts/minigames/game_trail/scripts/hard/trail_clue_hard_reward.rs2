@@ -88,12 +88,17 @@ switch_int ($random) {
 
 [proc,trail_clue_hard_mega_rare]
 def_int $random = random(6);
+def_namedobj $mega_rare_item;
 
 switch_int ($random) {
-    case 0 : inv_add(trail_rewardinv, red_partyhat, 1);
-    case 1 : inv_add(trail_rewardinv, yellow_partyhat, 1);
-    case 2 : inv_add(trail_rewardinv, blue_partyhat, 1);
-    case 3 : inv_add(trail_rewardinv, green_partyhat, 1);
-    case 4 : inv_add(trail_rewardinv, purple_partyhat, 1);
-    case 5 : inv_add(trail_rewardinv, white_partyhat, 1);
+    case 0 : $mega_rare_item = red_partyhat;
+    case 1 : $mega_rare_item = yellow_partyhat;
+    case 2 : $mega_rare_item = blue_partyhat;
+    case 3 : $mega_rare_item = green_partyhat;
+    case 4 : $mega_rare_item = purple_partyhat;
+    case 5 : $mega_rare_item = white_partyhat;
 }
+
+inv_add(trail_rewardinv, $mega_rare_item, 1);
+
+mes_broadcast("[BROADCAST] <displayname> has received a <oc_name($mega_rare_item)> from a Hard Clue Scroll!");

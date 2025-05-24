@@ -82,10 +82,15 @@ switch_int ($random) {
 
 [proc,trail_clue_medium_mega_rare]
 def_int $random = random(4);
+def_namedobj $mega_rare_item;
 
 switch_int ($random) {
-    case 0 : inv_add(trail_rewardinv, bunnyears, 1);
-    case 1 : inv_add(trail_rewardinv, scythe, 1);
-    case 2 : inv_add(trail_rewardinv, santa_hat, 1);
-    case 3 : inv_add(trail_rewardinv, easter_egg, 1);
+    case 0 : $mega_rare_item = bunnyears;
+    case 1 : $mega_rare_item = scythe;
+    case 2 : $mega_rare_item = santa_hat;
+    case 3 : $mega_rare_item = easter_egg;
 }
+
+inv_add(trail_rewardinv, $mega_rare_item, 1);
+
+mes_broadcast("[BROADCAST] <displayname> has received a <oc_name($mega_rare_item)> from a Medium Clue Scroll!");

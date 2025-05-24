@@ -11,7 +11,7 @@ runweight=yes
 
 [trail_rewardinv]
 scope=temp
-size=9
+size=18
 stackall=yes
 
 [tradeoffer]

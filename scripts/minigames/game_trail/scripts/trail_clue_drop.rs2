@@ -69,7 +69,7 @@ if (p_finduid(uid) = true) {
     }
 }
 
-[proc,trail_skillingcluedrop](int $rarity) // clues from skilling
+[proc,trail_skillingcluedrop](int $rarity, int $clueFromSkill) // clues from skilling
 if_close;
 if (p_finduid(uid) = true) {
     if (map_members = ^false | ~trail_hasclue_all = true) {
@@ -81,18 +81,37 @@ if (p_finduid(uid) = true) {
         if ($clue_type = 0) {
             def_namedobj $trail_clue_hard = enum(int, namedobj, trail_hard_enum, random(enum_getoutputcount(trail_hard_enum)));
             inv_add(inv, $trail_clue_hard, 1);
+            ~trail_skillingcluedroptype($clueFromSkill);
             ~clear_trail_progress;
         } else if ($clue_type >= 4) {
             def_namedobj $trail_clue_medium = enum(int, namedobj, trail_medium_enum, random(enum_getoutputcount(trail_medium_enum)));
             inv_add(inv, $trail_clue_medium, 1);
+            ~trail_skillingcluedroptype($clueFromSkill);
             ~clear_trail_progress;
             } else {
             def_namedobj $trail_clue_easy = enum(int, namedobj, trail_easy_enum, random(enum_getoutputcount(trail_easy_enum)));
             inv_add(inv, $trail_clue_easy, 1);
+            ~trail_skillingcluedroptype($clueFromSkill);
             ~clear_trail_progress;
             }
     }
 }
+
+[proc,trail_skillingcluedroptype](int $clueSkillID) // clues from skilling
+if ($clueSkillID = 1) {
+    mes("A bottle washes to shore... in it you find a Clue Scroll!"); //fishing
+    } else if ($clueSkillID = 2) {
+    mes("While mining you notice something in the rocks, you found a Clue Scroll!"); //mining
+    } else if ($clueSkillID = 3) {
+    mes("Something falls from the tree, you find a Clue Scroll!"); //woodcutting
+    } else if ($clueSkillID = 4) {
+    mes("Inside the pocket, you also find a Clue Scroll!"); //pickpocketing
+    } else if ($clueSkillID = 5) {
+    mes("You notice a piece of papyrus on the stall, you find a Clue Scroll!"); //stalls
+    } else if ($clueSkillID = 6) {
+    mes("Inside the chest you also find a Clue Scroll!"); //locked chests
+    }
+
 
 [opobj3,_trail_challenge]
 if(inv_totalcat(inv, trail_challenge) > 0 | inv_totalcat(bank, trail_challenge) > 0) {

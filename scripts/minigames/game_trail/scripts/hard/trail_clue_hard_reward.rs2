@@ -91,12 +91,7 @@ def_int $random = random(6);
 def_namedobj $mega_rare_item;
 
 switch_int ($random) {
-    case 0 : $mega_rare_item = red_partyhat;
-    case 1 : $mega_rare_item = yellow_partyhat;
-    case 2 : $mega_rare_item = blue_partyhat;
-    case 3 : $mega_rare_item = green_partyhat;
-    case 4 : $mega_rare_item = purple_partyhat;
-    case 5 : $mega_rare_item = white_partyhat;
+    case 0 : $mega_rare_item = christmas_cracker;
 }
 
 inv_add(trail_rewardinv, $mega_rare_item, 1);

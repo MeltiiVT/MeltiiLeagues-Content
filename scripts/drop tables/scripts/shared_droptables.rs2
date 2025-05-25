@@ -144,7 +144,7 @@ if ($random < 8) {
 def_int $random = random(8);
 
 if ($random < 1) {
-    return (christmas_cracker, 1);
+    return (cert_vial_water, 500);
 } else if ($random < 3) {
     return (cert_blankrune, 500);
 } else if ($random < 5) {

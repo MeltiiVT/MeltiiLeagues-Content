@@ -44,7 +44,7 @@ if ($prestigeSkillsMenu = 1) {
 def_int $prestigeCombatSkillsMenu = ~p_choice5("Attack", 1, "Strength", 2, "Defence", 3, "Ranged", 4, "More Options", 5);
 
 if ($prestigeCombatSkillsMenu = 1) {
-        if (stat(attack) = 99) {
+        if (stat_base(attack) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_attack = add(%prestigepoint_attack,1);
@@ -63,7 +63,7 @@ if ($prestigeCombatSkillsMenu = 1) {
         }
         
 } else if ($prestigeCombatSkillsMenu = 2) {
-        if (stat(strength) = 99) {
+        if (stat_base(strength) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_strength = add(%prestigepoint_strength,1);
@@ -82,7 +82,7 @@ if ($prestigeCombatSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
 } else if ($prestigeCombatSkillsMenu = 3) {
-        if (stat(defence) = 99) {
+        if (stat_base(defence) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_defence = add(%prestigepoint_defence,1);
@@ -101,7 +101,7 @@ if ($prestigeCombatSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
 } else if ($prestigeCombatSkillsMenu = 4) {
-        if (stat(ranged) = 99) {
+        if (stat_base(ranged) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_ranged = add(%prestigepoint_ranged,1);
@@ -126,7 +126,7 @@ if ($prestigeCombatSkillsMenu = 1) {
 [label,prestigemaster_prestigecombatskillsmenu2]
 def_int $prestigeCombatSkillsMenu2 = ~p_choice5("Magic", 1, "Hitpoints", 2, "Prayer", 3, "Go Back", 4, "Skills Menu", 5);
 if ($prestigeCombatSkillsMenu2 = 1) {
-        if (stat(magic) = 99) {
+        if (stat_base(magic) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_magic = add(%prestigepoint_magic,1);
@@ -144,7 +144,7 @@ if ($prestigeCombatSkillsMenu2 = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
 } else if ($prestigeCombatSkillsMenu2 = 2) {
-        if (stat(hitpoints) = 99) {
+        if (stat_base(hitpoints) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_hitpoints = add(%prestigepoint_hitpoints,1);
@@ -162,7 +162,7 @@ if ($prestigeCombatSkillsMenu2 = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }  
 } else if ($prestigeCombatSkillsMenu2 = 3) {
-        if (stat(prayer) = 99) {
+        if (stat_base(prayer) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_prayer = add(%prestigepoint_prayer,1);
@@ -190,7 +190,7 @@ if ($prestigeCombatSkillsMenu2 = 1) {
 def_int $prestigeProcessingSkillsMenu = ~p_choice5("Smithing", 1, "Cooking", 2, "Fletching", 3, "Crafting", 4, "More Options", 5);
 
 if ($prestigeProcessingSkillsMenu = 1) {
-        if (stat(smithing) = 99) {
+        if (stat_base(smithing) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_smithing = add(%prestigepoint_smithing,1);
@@ -208,7 +208,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeProcessingSkillsMenu = 2) {
-        if (stat(cooking) = 99) {
+        if (stat_base(cooking) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_cooking = add(%prestigepoint_cooking,1);
@@ -226,7 +226,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeProcessingSkillsMenu = 3) {
-        if (stat(fletching) = 99) {
+        if (stat_base(fletching) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_fletching = add(%prestigepoint_fletching,1);
@@ -244,7 +244,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeProcessingSkillsMenu = 4) {
-        if (stat(crafting) = 99) {
+        if (stat_base(crafting) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_crafting = add(%prestigepoint_crafting,1);
@@ -269,7 +269,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
 def_int $prestigeProcessingSkillsMenu2 = ~p_choice4("Herblore", 1, "Runecraft", 2, "Go Back", 3, "Skills Menu", 4);
 
 if ($prestigeProcessingSkillsMenu2 = 1) {
-        if (stat(herblore) = 99) {
+        if (stat_base(herblore) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_herblore = add(%prestigepoint_herblore,1);
@@ -287,7 +287,7 @@ if ($prestigeProcessingSkillsMenu2 = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeProcessingSkillsMenu2 = 2) {
-        if (stat(runecraft) = 99) {
+        if (stat_base(runecraft) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_runecraft = add(%prestigepoint_runecraft,1);
@@ -314,7 +314,7 @@ if ($prestigeProcessingSkillsMenu2 = 1) {
 def_int $prestigeGatheringSkillsMenu = ~p_choice4("Mining", 1, "Fishing", 2, "Woodcutting", 3, "Go Back", 4);
 
 if ($prestigeGatheringSkillsMenu = 1) {
-        if (stat(mining) = 99) {
+        if (stat_base(mining) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_mining = add(%prestigepoint_mining,1);
@@ -332,7 +332,7 @@ if ($prestigeGatheringSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeGatheringSkillsMenu = 2) {
-        if (stat(fishing) = 99) {
+        if (stat_base(fishing) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_fishing = add(%prestigepoint_fishing,1);
@@ -350,7 +350,7 @@ if ($prestigeGatheringSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeGatheringSkillsMenu = 3) {
-        if (stat(woodcutting) = 99) {
+        if (stat_base(woodcutting) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_woodcutting = add(%prestigepoint_woodcutting,1);
@@ -375,7 +375,7 @@ if ($prestigeGatheringSkillsMenu = 1) {
 def_int $prestigeMiscSkillsMenu = ~p_choice4("Agility", 1, "Thieving", 2, "Firemaking", 3, "Go Back", 4);
 
 if ($prestigeMiscSkillsMenu = 1) {
-        if (stat(agility) = 99) {
+        if (stat_base(agility) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_agility = add(%prestigepoint_agility,1);
@@ -393,7 +393,7 @@ if ($prestigeMiscSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeMiscSkillsMenu = 2) {
-        if (stat(thieving) = 99) {
+        if (stat_base(thieving) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_thieving = add(%prestigepoint_thieving,1);
@@ -411,7 +411,7 @@ if ($prestigeMiscSkillsMenu = 1) {
             ~chatnpc("<p,neutral>You need to be level 99 to prestige.");
         }
     } else if ($prestigeMiscSkillsMenu = 3) {
-        if (stat(firemaking) = 99) {
+        if (stat_base(firemaking) = 99) {
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
                 if ($prestigeConfirm = 1) {
                     %prestigepoint_firemaking = add(%prestigepoint_firemaking,1);

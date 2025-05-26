@@ -707,3 +707,6 @@ scope=perm
 
 [prestigetotal_woodcutting]
 scope=perm
+
+[portsarim_teleportunlock]
+scope=perm

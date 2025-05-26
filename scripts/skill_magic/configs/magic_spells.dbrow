@@ -103,6 +103,15 @@ data=runesrequired,waterrune,2,lawrune,2,null,null
 data=experience,610
 data=tele_coord,0_41_51_37_37
 
+[magic_spell_portsarim_teleport]
+table=magic_spell_table
+data=spell,^portsarim_teleport
+data=members,true
+data=levelrequired,49
+data=runesrequired,waterrune,5,lawrune,1,null,null
+data=experience,580
+data=tele_coord,0_47_50_8_17
+
 [magic_spell_teleport_watchtower]
 table=magic_spell_table
 data=spell,^watchtower_teleport

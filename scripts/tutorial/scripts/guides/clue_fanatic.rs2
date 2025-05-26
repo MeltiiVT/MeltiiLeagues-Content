@@ -1,0 +1,40 @@
+[opnpc1,clue_fanatic]
+
+@cluefanatic_dialogue;
+
+[label,cluefanatic_dialogue]
+def_int $cluepoints =  %clue_points;
+~chatnpc("<p,neutral>Hello hunter! You currently have <tostring($cluepoints)> Clue Points.");
+~chatnpc("<p,neutral>What would you like to purchase today with your points?");
+def_int $choiceShop = ~p_choice2("Teleports", 1, "Nevermind", 2);
+    if ($choiceShop = 1) {
+        @cluefanatic_teleports;
+        } else if ($choiceShop = 2) {
+            ~chatplayer("<p,neutral>Nevermind, not today.");
+        }
+
+[label,cluefanatic_teleports]
+def_int $cluepoints =  %clue_points;
+def_int $choiceShop = ~p_choice2("Port Sarim Teleport", 1, "Go Back", 2);
+    if ($choiceShop = 1) {
+        ~chatnpc("<p,neutral>The Port Sarim Teleport spells costs 50 Clue Points.");
+        ~chatnpc("<p,neutral>You currently have <tostring($cluepoints)> Clue Points. Would you like to purchase this?");
+        def_int $confirmPurchase = ~p_choice2("Yes - Purchase", 1, "No - Do not Purchase", 2);
+        if ($confirmPurchase = 1) {
+            if ($cluepoints > 49 & %portsarim_teleportunlock = 0) {
+                %clue_points = sub(%clue_points,50);
+                $cluepoints = %clue_points;
+                mes("You've learned the Port Sarim Teleport spell!");
+                mes("You have <tostring($cluepoints)> Clue Points remaining.");
+                %portsarim_teleportunlock = 1;
+            } else if (%portsarim_teleportunlock = 1) {
+                ~chatnpc("<p,quiz>You've already unlocked this spell.");
+            } else {
+                ~chatnpc("<p,quiz>You don't have enough Clue Points to purchase this.");
+            }
+        } else if ($confirmPurchase = 2) {
+            ~chatplayer("<p,neutral>Nevermind, not today.");
+        }
+    } else if ($choiceShop = 2) {
+        @cluefanatic_dialogue;
+    }

@@ -4,6 +4,7 @@
 [if_button,magic:camelot_teleport] @magic_teleport(^camelot_teleport);
 [if_button,magic:ardougne_teleport] @magic_teleport(^ardougne_teleport);
 [if_button,magic:watchtower_teleport] @magic_teleport(^watchtower_teleport);
+[if_button,magic:portsarim_teleport] @magic_teleport(^portsarim_teleport);
 
 [label,magic_teleport](int $spell)
 if_close;
@@ -20,6 +21,10 @@ if (p_finduid(uid) = true) {
     }
     if($spell = ^ardougne_teleport & %elena_progress < ^elena_complete) {
         mes("You must have completed Plague City to use this spell.");
+        return;
+    }
+    if($spell = ^portsarim_teleport & %portsarim_teleportunlock = 0) {
+        mes("You must learn this spell from the Clue Fanatic.");
         return;
     }
     if($spell = ^watchtower_teleport & %itwatchtower_progress < ^itwatchtower_complete) {

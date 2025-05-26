@@ -13,6 +13,7 @@ def_int $prestigeMenu = ~p_choice4("Prestige Information", 1, "Prestige Skills",
         ~chatnpc("<p,neutral>You can prestige a skill after you achieve level 99 in that skill.");
         ~chatnpc("<p,neutral>You can talk to me and select the Prestige Skills option, and I can prestige them for you.");
         ~chatnpc("<p,neutral>Do be warned, when you prestige a skill your exp in that skill will be reset to 0.");
+        ~chatnpc("<p,neutral>This will also incur a cost of 99,000 coins.");
         ~chatnpc("<p,neutral>You'll receive one prestige point in that skill, which can be spent by talking to me for a permanent buff.");
         ~chatnpc("<p,neutral>You'll also receive an additional 1x onto your skill multiplier in that skill.");
         ~chatnpc("<p,neutral>Is there anything else I can help you with today?");
@@ -45,8 +46,14 @@ def_int $prestigeCombatSkillsMenu = ~p_choice5("Attack", 1, "Strength", 2, "Defe
 
 if ($prestigeCombatSkillsMenu = 1) {
         if (stat_base(attack) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_attack = add(%prestigepoint_attack,1);
                     %prestigetotal_attack = add(%prestigetotal_attack,1);
                     def_int $prestigepoints =  %prestigepoint_attack;
@@ -64,8 +71,14 @@ if ($prestigeCombatSkillsMenu = 1) {
         
 } else if ($prestigeCombatSkillsMenu = 2) {
         if (stat_base(strength) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_strength = add(%prestigepoint_strength,1);
                     %prestigetotal_strength = add(%prestigetotal_strength,1);
                     def_int $prestigepoints =  %prestigepoint_strength;
@@ -83,8 +96,14 @@ if ($prestigeCombatSkillsMenu = 1) {
         }
 } else if ($prestigeCombatSkillsMenu = 3) {
         if (stat_base(defence) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_defence = add(%prestigepoint_defence,1);
                     %prestigetotal_defence = add(%prestigetotal_defence,1);
                     def_int $prestigepoints =  %prestigepoint_defence;
@@ -102,8 +121,14 @@ if ($prestigeCombatSkillsMenu = 1) {
         }
 } else if ($prestigeCombatSkillsMenu = 4) {
         if (stat_base(ranged) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_ranged = add(%prestigepoint_ranged,1);
                     %prestigetotal_ranged = add(%prestigetotal_ranged,1);
                     def_int $prestigepoints =  %prestigepoint_ranged;
@@ -127,8 +152,14 @@ if ($prestigeCombatSkillsMenu = 1) {
 def_int $prestigeCombatSkillsMenu2 = ~p_choice5("Magic", 1, "Hitpoints", 2, "Prayer", 3, "Go Back", 4, "Skills Menu", 5);
 if ($prestigeCombatSkillsMenu2 = 1) {
         if (stat_base(magic) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_magic = add(%prestigepoint_magic,1);
                     %prestigetotal_magic = add(%prestigetotal_magic,1);
                     def_int $prestigepoints =  %prestigepoint_magic;
@@ -145,8 +176,14 @@ if ($prestigeCombatSkillsMenu2 = 1) {
         }
 } else if ($prestigeCombatSkillsMenu2 = 2) {
         if (stat_base(hitpoints) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_hitpoints = add(%prestigepoint_hitpoints,1);
                     %prestigetotal_hitpoints = add(%prestigetotal_hitpoints,1);
                     def_int $prestigepoints =  %prestigepoint_hitpoints;
@@ -163,8 +200,14 @@ if ($prestigeCombatSkillsMenu2 = 1) {
         }  
 } else if ($prestigeCombatSkillsMenu2 = 3) {
         if (stat_base(prayer) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_prayer = add(%prestigepoint_prayer,1);
                     %prestigetotal_prayer = add(%prestigetotal_prayer,1);
                     def_int $prestigepoints =  %prestigepoint_prayer;
@@ -191,8 +234,14 @@ def_int $prestigeProcessingSkillsMenu = ~p_choice5("Smithing", 1, "Cooking", 2, 
 
 if ($prestigeProcessingSkillsMenu = 1) {
         if (stat_base(smithing) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_smithing = add(%prestigepoint_smithing,1);
                     %prestigetotal_smithing = add(%prestigetotal_smithing,1);
                     def_int $prestigepoints =  %prestigepoint_smithing;
@@ -209,8 +258,14 @@ if ($prestigeProcessingSkillsMenu = 1) {
         }
     } else if ($prestigeProcessingSkillsMenu = 2) {
         if (stat_base(cooking) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_cooking = add(%prestigepoint_cooking,1);
                     %prestigetotal_cooking = add(%prestigetotal_cooking,1);
                     def_int $prestigepoints =  %prestigepoint_cooking;
@@ -227,8 +282,14 @@ if ($prestigeProcessingSkillsMenu = 1) {
         }
     } else if ($prestigeProcessingSkillsMenu = 3) {
         if (stat_base(fletching) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_fletching = add(%prestigepoint_fletching,1);
                     %prestigetotal_fletching = add(%prestigetotal_fletching,1);
                     def_int $prestigepoints =  %prestigepoint_fletching;
@@ -245,8 +306,14 @@ if ($prestigeProcessingSkillsMenu = 1) {
         }
     } else if ($prestigeProcessingSkillsMenu = 4) {
         if (stat_base(crafting) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_crafting = add(%prestigepoint_crafting,1);
                     %prestigetotal_crafting = add(%prestigetotal_crafting,1);
                     def_int $prestigepoints =  %prestigepoint_crafting;
@@ -270,8 +337,14 @@ def_int $prestigeProcessingSkillsMenu2 = ~p_choice4("Herblore", 1, "Runecraft", 
 
 if ($prestigeProcessingSkillsMenu2 = 1) {
         if (stat_base(herblore) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_herblore = add(%prestigepoint_herblore,1);
                     %prestigetotal_herblore = add(%prestigetotal_herblore,1);
                     def_int $prestigepoints =  %prestigepoint_herblore;
@@ -288,8 +361,14 @@ if ($prestigeProcessingSkillsMenu2 = 1) {
         }
     } else if ($prestigeProcessingSkillsMenu2 = 2) {
         if (stat_base(runecraft) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_runecraft = add(%prestigepoint_runecraft,1);
                     %prestigetotal_runecraft = add(%prestigetotal_runecraft,1);
                     def_int $prestigepoints =  %prestigepoint_runecraft;
@@ -315,8 +394,14 @@ def_int $prestigeGatheringSkillsMenu = ~p_choice4("Mining", 1, "Fishing", 2, "Wo
 
 if ($prestigeGatheringSkillsMenu = 1) {
         if (stat_base(mining) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_mining = add(%prestigepoint_mining,1);
                     %prestigetotal_mining = add(%prestigetotal_mining,1);
                     def_int $prestigepoints =  %prestigepoint_mining;
@@ -333,8 +418,14 @@ if ($prestigeGatheringSkillsMenu = 1) {
         }
     } else if ($prestigeGatheringSkillsMenu = 2) {
         if (stat_base(fishing) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_fishing = add(%prestigepoint_fishing,1);
                     %prestigetotal_fishing = add(%prestigetotal_fishing,1);
                     def_int $prestigepoints =  %prestigepoint_fishing;
@@ -351,8 +442,14 @@ if ($prestigeGatheringSkillsMenu = 1) {
         }
     } else if ($prestigeGatheringSkillsMenu = 3) {
         if (stat_base(woodcutting) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_woodcutting = add(%prestigepoint_woodcutting,1);
                     %prestigetotal_woodcutting = add(%prestigetotal_woodcutting,1);
                     def_int $prestigepoints =  %prestigepoint_woodcutting;
@@ -376,8 +473,14 @@ def_int $prestigeMiscSkillsMenu = ~p_choice4("Agility", 1, "Thieving", 2, "Firem
 
 if ($prestigeMiscSkillsMenu = 1) {
         if (stat_base(agility) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_agility = add(%prestigepoint_agility,1);
                     %prestigetotal_agility = add(%prestigetotal_agility,1);
                     def_int $prestigepoints =  %prestigepoint_agility;
@@ -394,8 +497,14 @@ if ($prestigeMiscSkillsMenu = 1) {
         }
     } else if ($prestigeMiscSkillsMenu = 2) {
         if (stat_base(thieving) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_thieving = add(%prestigepoint_thieving,1);
                     %prestigetotal_thieving = add(%prestigetotal_thieving,1);
                     def_int $prestigepoints =  %prestigepoint_thieving;
@@ -412,8 +521,14 @@ if ($prestigeMiscSkillsMenu = 1) {
         }
     } else if ($prestigeMiscSkillsMenu = 3) {
         if (stat_base(firemaking) = 99) {
+            ~chatnpc("<p,neutral>Prestiging this skill will cost 99,000 coins and one prestige point. Is that okay?");
             def_int $prestigeConfirm = ~p_choice2("Yes - Prestige Skill", 1, "No - Do Not Prestige", 2);
+            if (inv_total(inv, coins) < 99000 & $prestigeConfirm = 1) {
+                ~chatplayer("<p,quiz>Sorry, I don't have 99,000 coins.");
+                return;
+            } else 
                 if ($prestigeConfirm = 1) {
+                    inv_del(inv, coins, 99000); //99k
                     %prestigepoint_firemaking = add(%prestigepoint_firemaking,1);
                     %prestigetotal_firemaking = add(%prestigetotal_firemaking,1);
                     def_int $prestigepoints =  %prestigepoint_firemaking;

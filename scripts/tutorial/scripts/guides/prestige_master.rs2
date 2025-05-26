@@ -446,7 +446,7 @@ if ($prestigeCombatSkillsMenu = 1) {
 [label,prestigemaster_combatskillsmenu2]
 def_int $prestigeCombatSkillsMenu2 = ~p_choice5("Magic", 1, "Hitpoints", 2, "Prayer", 3, "Go Back", 4, "Skills Menu", 5);
 if ($prestigeCombatSkillsMenu2 = 1) {
-        ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
+        @prestigemaster_magicmenu;
     } else if ($prestigeCombatSkillsMenu2 = 2) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeCombatSkillsMenu2 = 3) {
@@ -509,6 +509,31 @@ if ($prestigeMiscSkillsMenu = 1) {
     } else if ($prestigeMiscSkillsMenu = 3) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeMiscSkillsMenu = 4) {
+        @prestigemaster_skillsmenu;
+}
+
+[label,prestigemaster_magicmenu]
+def_int $prestigeMagicMenu = ~p_choice3("Increased Magic Damage", 1, "Superheat Hides", 2, "Go Back", 3);
+
+if ($prestigeMagicMenu = 1) {
+        ~chatnpc("<p,neutral>This perk is not yet available, sorry.");
+    } else if ($prestigeMagicMenu = 2) {
+          ~chatnpc("<p,neutral>This will allow you to tan hides with the Superheat spell. Are you sure you wish to use your Magic prestige point?");
+        def_int $prestigeMagicDoubleLoot = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeMagicDoubleLoot = 1 & %prestigemagic_3 = 0) {
+            if (%prestigepoint_magic > 0) {
+            %prestigepoint_magic = sub(%prestigepoint_magic,1);
+            %prestigemagic_3 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! You can now tan hides with the Superheat spell.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough Magic prestige points.");
+            }
+        } else if ($prestigeMagicDoubleLoot = 1) {
+            ~chatnpc("<p,neutral>You already have this perk.");
+        } else if ($prestigeMagicDoubleLoot = 2) {
+            @prestigemaster_thievingmenu;
+        }
+    } else if ($prestigeMagicMenu = 3) {
         @prestigemaster_skillsmenu;
 }
 

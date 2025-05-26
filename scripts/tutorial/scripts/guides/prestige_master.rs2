@@ -54,6 +54,7 @@ if ($prestigeCombatSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Attack skill!");
                     mes("You've prestiged your Attack Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Attack Prestige Points.");
                     stat_set_min(attack);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Attack skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                     }
@@ -72,6 +73,7 @@ if ($prestigeCombatSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Strength skill!");
                     mes("You've prestiged your Strength Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Strength Prestige Points.");
                     stat_set_min(strength);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Strength skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -90,6 +92,7 @@ if ($prestigeCombatSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Defence skill!");
                     mes("You've prestiged your Defence Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Defence Prestige Points.");
                     stat_set_min(defence);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Defence skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -108,6 +111,7 @@ if ($prestigeCombatSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Ranged skill!");
                     mes("You've prestiged your Ranged Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Ranged Prestige Points.");
                     stat_set_min(ranged);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Ranged skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -132,6 +136,7 @@ if ($prestigeCombatSkillsMenu2 = 1) {
                     mes("Congratulations, you've prestiged your Magic skill!");
                     mes("You've prestiged your Magic Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Magic Prestige Points.");
                     stat_set_min(magic);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Magic skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -149,6 +154,7 @@ if ($prestigeCombatSkillsMenu2 = 1) {
                     mes("Congratulations, you've prestiged your Hitpoints skill!");
                     mes("You've prestiged your Hitpoints Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Hitpoints Prestige Points.");
                     stat_set_min(hitpoints);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Hitpoints skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -166,6 +172,7 @@ if ($prestigeCombatSkillsMenu2 = 1) {
                     mes("Congratulations, you've prestiged your Prayer skill!");
                     mes("You've prestiged your Prayer Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Prayer Prestige Points.");
                     stat_set_min(prayer);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Prayer skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -193,6 +200,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Smithing skill!");
                     mes("You've prestiged your Smithing Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Smithing Prestige Points.");
                     stat_set_min(smithing);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Smithing skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -210,6 +218,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Cooking skill!");
                     mes("You've prestiged your Cooking Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Cooking Prestige Points.");
                     stat_set_min(cooking);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Cooking skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -227,6 +236,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Fletching skill!");
                     mes("You've prestiged your Fletching Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Fletching Prestige Points.");
                     stat_set_min(fletching);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Fletching skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -244,6 +254,7 @@ if ($prestigeProcessingSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Crafting skill!");
                     mes("You've prestiged your Crafting Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Crafting Prestige Points.");
                     stat_set_min(crafting);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Crafting skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -268,6 +279,7 @@ if ($prestigeProcessingSkillsMenu2 = 1) {
                     mes("Congratulations, you've prestiged your Herblore skill!");
                     mes("You've prestiged your Herblore Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Herblore Prestige Points.");
                     stat_set_min(herblore);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Herblore skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -285,6 +297,7 @@ if ($prestigeProcessingSkillsMenu2 = 1) {
                     mes("Congratulations, you've prestiged your Runecraft skill!");
                     mes("You've prestiged your Runecraft Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Runecraft Prestige Points.");
                     stat_set_min(runecraft);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Runecraft skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -311,6 +324,7 @@ if ($prestigeGatheringSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Mining skill!");
                     mes("You've prestiged your Mining Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Mining Prestige Points.");
                     stat_set_min(mining);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Mining skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -328,6 +342,7 @@ if ($prestigeGatheringSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Fishing skill!");
                     mes("You've prestiged your Fishing Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Fishing Prestige Points.");
                     stat_set_min(fishing);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Fishing skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -345,6 +360,7 @@ if ($prestigeGatheringSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Woodcutting skill!");
                     mes("You've prestiged your Woodcutting Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Woodcutting Prestige Points.");
                     stat_set_min(woodcutting);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Woodcutting skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -369,6 +385,7 @@ if ($prestigeMiscSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Agility skill!");
                     mes("You've prestiged your Agility Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Agility Prestige Points.");
                     stat_set_min(agility);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Agility skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -386,6 +403,7 @@ if ($prestigeMiscSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Thieving skill!");
                     mes("You've prestiged your Thieving Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Thieving Prestige Points.");
                     stat_set_min(thieving);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Thieving skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }
@@ -403,6 +421,7 @@ if ($prestigeMiscSkillsMenu = 1) {
                     mes("Congratulations, you've prestiged your Firemaking skill!");
                     mes("You've prestiged your Firemaking Skill <tostring($prestigetimes)> times and have <tostring($prestigepoints)> Firemaking Prestige Points.");
                     stat_set_min(firemaking);
+                    mes_broadcast("[BROADCAST] <displayname> has prestiged their Firemaking skill <tostring($prestigetimes)> times!");
                 } else {
                     ~chatplayer("<p,neutral>I've changed my mind.");
                 }

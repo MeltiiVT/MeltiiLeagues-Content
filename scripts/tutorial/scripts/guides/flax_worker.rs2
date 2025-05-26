@@ -1,0 +1,67 @@
+[opnpc1,flax_worker]
+
+@flaxexpert_dialogue;
+
+[label,flaxexpert_dialogue]
+    if (%flax_level < 1) {
+        ~chatnpc("<p,neutral>Hey there! I can teach you how to be better at harvesting flax.");
+        ~chatnpc("<p,neutral>For just 100,000 coins I can teach you how to pick two flax at once.");
+        def_int $choiceFlax = ~p_choice2("Yes, pay 100,000 coins.", 1, "No - Save your money.", 2);
+        if (inv_total(inv, coins) < 100000) {
+        ~chatplayer("<p,quiz>Woops, I don't have that much money on me.");
+        return;
+        } else if ($choiceFlax = 1) {
+            inv_del(inv, coins, 100000); //100k
+            %flax_level = 1;
+            ~chatplayer("<p,neutral>Yes please, here you go.");
+            ~chatnpc("<p,neutral>Thank you, woosh you can now pick two flax at a time.");
+            ~chatplayer("<p,neutral>Huh? You didn't do anything.");
+            ~chatnpc("<p,neutral>Yeah I did, that was flaxromancy. Go try it out.");
+        } else if ($choiceFlax = 2) {
+            ~chatplayer("<p,neutral>Sorry, not today.");
+        }
+
+
+    } else if (%flax_level < 2) {
+        ~chatnpc("<p,neutral>I told you it'd work. Here to learn more?");
+        ~chatnpc("<p,neutral>For just 500,000 coins I can teach you how to pick three flax at once.");
+        def_int $choiceFlax = ~p_choice2("Yes, pay 500,000 coins.", 1, "No - Save your money.", 2);
+        if (inv_total(inv, coins) < 500000) {
+        ~chatplayer("<p,quiz>Woops, I don't have that much money on me.");
+        return;
+        } else if ($choiceFlax = 1) {
+            inv_del(inv, coins, 500000); //500k
+            %flax_level = 2;
+            ~chatplayer("<p,neutral>Yes please, here you go.");
+            ~chatnpc("<p,neutral>Picklety Triplety, zoopity woopity.");
+            ~chatnpc("<p,neutral>Eebidy gleebidy, weebily woogly.");
+            ~chatnpc("<p,neutral>Swish swash, I love me some cash.");
+            ~chatplayer("<p,neutral>...");
+            ~chatnpc("<p,neutral>You may now pick three flaxus!");
+            ~chatplayer("<p,quiz>There's no way that's a real spell.");
+        } else if ($choiceFlax = 2) {
+            ~chatplayer("<p,neutral>Sorry, not today.");
+            } 
+
+    } else if (%flax_level < 3) {
+        ~chatnpc("<p,neutral>Miss my spells already?");
+        ~chatnpc("<p,neutral>For just 1,000,000 coins I can teach you how to pick FOUR flax at once.");
+        def_int $choiceFlax = ~p_choice2("Yes, pay 1,000,000 coins.", 1, "No - Save your money.", 2);
+        if (inv_total(inv, coins) < 1000000) {
+        ~chatplayer("<p,quiz>Woops, I don't have that much money on me.");
+        return;
+        } else if ($choiceFlax = 1) {
+            inv_del(inv, coins, 1000000); //1m
+            %flax_level = 3;
+            ~chatplayer("<p,neutral>Yes please, here you go.");
+            ~chatnpc("<p,neutral>Waboosh.");
+            ~chatplayer("<p,neutral>That's it this time?");
+            ~chatnpc("<p,neutral>Yes, would you prefer I made a spectacle of it?");
+            ~chatplayer("<p,neutral>No I suppose not, I'm not sure what I expected.");
+        } else if ($choiceFlax = 2) {
+            ~chatplayer("<p,neutral>Sorry, not today.");
+            }
+            
+    } else if (%flax_level < 4) {
+        ~chatnpc("<p,neutral>I have nothing more to teach you.");
+        }

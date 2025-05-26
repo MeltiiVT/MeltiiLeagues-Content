@@ -7,15 +7,6 @@ switch_int(%tutorial_progress) {
     case default : @runescape_guide_return;
 }
 
-// Player variables for combat style choice:
-// %tutorial_style_selected (boolean): Tracks if this choice has been made. Defaults to false.
-// %chosen_combat_style_buff (int): Stores the chosen style (0=none, 1=Melee, 2=Ranged, 3=Magic). Defaults to 0.
-
-// Assumed constants for combat styles (ensure these are defined):
-// ^combat_style_melee = 1;
-// ^combat_style_ranged = 2;
-// ^combat_style_magic = 3;
-
 [label,runescape_guide_welcome]
     ~chatnpc("<p,neutral>Greetings! Before we begin with the main tutorial, you have an important choice.");
     ~chatnpc("<p,neutral>You can select a preferred combat style. This choice is permanent, but you will be able to obtain the others far later.");

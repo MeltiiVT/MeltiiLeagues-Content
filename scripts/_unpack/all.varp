@@ -362,3 +362,6 @@ scope=perm
 
 [hard_clues_completed]
 scope=perm
+
+[flax_level]
+scope=perm

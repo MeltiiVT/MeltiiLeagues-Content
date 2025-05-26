@@ -240,6 +240,8 @@
 [command,.stat_drain](stat $stat, int $constant, int $percent)
 // info: Roll a skill success check
 [command,stat_random](stat $stat, int $low, int $high)(boolean)
+// info: Set a stat to its minimum level (1, or 10 for HP)
+[command,stat_set_min](stat $stat)
 // info: Roll a skill success check for the secondary player
 [command,.stat_random](stat $stat, int $low, int $high)(boolean)
 // info: Get the player's UID to use in finduid/p_finduid later

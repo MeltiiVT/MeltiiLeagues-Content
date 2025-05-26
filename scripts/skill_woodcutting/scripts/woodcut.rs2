@@ -128,7 +128,7 @@ if (stat_random(woodcutting, $tree_chance_low, $tree_chance_high) = true) {
     mes("You get some <lowercase(oc_name($product))>.");
     stat_advance(woodcutting, db_getfield($data, woodcutting_trees:productexp, 0));
     inv_add(inv, $product, 1);
-    ~trail_skillingcluedrop(1, 3);
+    ~trail_skillingcluedrop(1000, 3);
     if (random($deplete_chance) = 0) {
         $respawnrate = ~scale_by_playercount($respawnrate);
         loc_change(loc_param(next_loc_stage), $respawnrate);

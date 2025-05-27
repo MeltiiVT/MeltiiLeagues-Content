@@ -110,6 +110,8 @@ if ($clueSkillID = 1) {
     mes("You notice a piece of papyrus on the stall, you find a Clue Scroll!"); //stalls
     } else if ($clueSkillID = 6) {
     mes("Inside the chest you also find a Clue Scroll!"); //locked chests
+    } else if ($clueSkillID = 7) {
+    mes("As you finish the obstacle, you find a Clue Scroll!"); //agility
     }
 
 

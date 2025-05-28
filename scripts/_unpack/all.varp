@@ -710,3 +710,6 @@ scope=perm
 
 [portsarim_teleportunlock]
 scope=perm
+
+[crafting_guild_freeentry]
+scope=perm

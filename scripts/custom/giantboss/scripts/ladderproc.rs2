@@ -1,0 +1,6 @@
+[proc,coord_diff](coord $coord1, coord $coord2)(int, int, int)
+def_int $x = sub(coordx($coord1), coordx($coord2));
+def_int $y = sub(coordy($coord1), coordy($coord2));
+def_int $z = sub(coordz($coord1), coordz($coord2));
+return(multiply($x, -1), multiply($y, -1), multiply($z, -1));
+// :3

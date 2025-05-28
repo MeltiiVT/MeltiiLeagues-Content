@@ -1,3 +1,4 @@
+
 // normal rocks
 [oploc1,_mining_rock_normal] @mining_firstswing(get_ore_normal);
 [oploc3,_mining_rock_normal] @mining_continue(get_ore_normal);
@@ -126,11 +127,15 @@ if (random($chance) = ^true) {
     // They added a 1t p_delay in this update: https://oldschool.runescape.wiki/w/Update:Special_Attacks
     // p_delay(0);
     // deplete
+    def_int $mined = 0;
+    if ( random(4) = 0) {
     def_int $respawn = ~scale_by_playercount(db_getfield($data, mining_table:rock_respawnrate, 0));
-    // Temp note: dur does not need updated
     loc_change(loc_param(next_loc_stage_mining), $respawn);
     sound_synth(sound_230, 0, 0); // Sudden says its sound_230
     anim(null, 0);
+    $mined = 1;
+    }
+    // Temp note: dur does not need updated
     // The 'perfect' gold rocks in Family Crest are the same ID as regular gold rocks, so check to 
     // give out the right ore if we're in that location. Only gold rocks are in this room.
     def_namedobj $output = db_getfield($data, mining_table:rock_output, 0);
@@ -140,7 +145,10 @@ if (random($chance) = ^true) {
     inv_add(inv, $output, 1);
     stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
     mes("You manage to mine some <db_getfield($data, mining_table:ore_name, 0)>.");
-    return;
+    ~trail_skillingcluedrop(1000, 2);
+    if ($mined = 1) {
+        return;
+    }
 }
 p_oploc(3);
 
@@ -168,15 +176,18 @@ if (random($chance) = ^true) {
         mes("You just found <~add_article(oc_name(db_getfield($data, gem_cutting_table:cut_gem, 0)))>!");
     }
 } else if (stat_random(mining, db_getfield($data, mining_table:rock_successchance, 0)) = true) {
+    if ( random(4) = 0) {
     // deplete
     def_int $respawn = ~scale_by_playercount(db_getfield($data, mining_table:rock_respawnrate, 0));
     // Temp note: dur does not need updated
     loc_change(loc_param(next_loc_stage_mining), $respawn);
     sound_synth(sound_230, 0, 0); // Sudden says its sound_230
     anim(null, 0);
+    }
     inv_add(inv, db_getfield($data, mining_table:rock_output, 0), 1);
     stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
     mes("You manage to mine some <db_getfield($data, mining_table:ore_name, 0)>.");
+    ~trail_skillingcluedrop(1000, 2);
     return;
 }
 p_oploc(3);
@@ -214,12 +225,14 @@ if (stat_random(mining, $low, $high) = true) {
     // They added a 1t p_delay in this update: https://oldschool.runescape.wiki/w/Update:Special_Attacks
     // p_delay(0);
     // deplete
+    if ( random(4) = 0) {
     def_int $respawn = ~scale_by_playercount(db_getfield($data, mining_table:rock_respawnrate, 0));
     // Temp note: dur does not need updated
     loc_change(loc_param(next_loc_stage_mining), $respawn);
     // stop mining, give ore and xp.
     sound_synth(found_gem, 0, 0);
     anim(null, 0);
+    }
     def_namedobj $gem;
     def_int $count;
     $gem, $count = ~roll_on_drop_table(gem_rock_table);
@@ -229,6 +242,7 @@ if (stat_random(mining, $low, $high) = true) {
     db_find(gem_cutting_table:uncut_gem, $gem);
     $data = db_findnext;
     mes("You just mined <~add_article(oc_name(db_getfield($data, gem_cutting_table:cut_gem, 0)))>!");
+    ~trail_skillingcluedrop(1000, 2);
     return;
 }
 p_oploc(3);

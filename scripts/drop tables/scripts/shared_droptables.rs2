@@ -131,7 +131,28 @@ if ($random < 8) {
 } else if ($random < 12) {
     return (dragonshield_a, 1);
 } else if ($random < 15) {
+    return (disk_of_returning, 1);
+} else if ($random < 17) {
+    return (pumpkin, 1);
+} else if ($random < 19) {
     return (dragon_spear, 1);
+} else { // osrs
+    return(burnt_lobster, 1);
+}
+
+[proc,kbd_megararetable]()(namedobj, int)
+def_int $random = random(8);
+
+if ($random < 1) {
+    return (cert_vial_water, 500);
+} else if ($random < 3) {
+    return (cert_blankrune, 500);
+} else if ($random < 5) {
+    return (feather, 5000);
+} else if ($random < 7) {
+    return (cert_cow_hide, 250);
+} else if ($random < 8) {
+    return (raw_lobster, 1);
 }
 
 [proc,randomjunk]()(namedobj, int) // guess

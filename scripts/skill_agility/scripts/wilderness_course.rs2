@@ -158,6 +158,7 @@ if(calc(%wilderness_course_progress + 1) >= $completed) {
 }
 if(%wilderness_course_progress = 5) {
     mes("You reach the top.");
+    ~trail_skillingcluedrop(60, 7);
     stat_advance(agility, 4989);
     %wilderness_course_progress = 0;
 }

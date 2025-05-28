@@ -57,7 +57,11 @@ while ($i <= enum_getoutputcount(stats)) {
 
 //hp is on a seperate timer, because of rapid heal and rapid restore
 [timer,health_regen]
-stat_heal(hitpoints, 1, 0);
+if (%chosen_combat_style_buff = 1) {
+    stat_heal(hitpoints, 3, 0);
+    } else {
+    stat_heal(hitpoints, 1, 0);
+}
 
 [proc,stat_reset](stat $stat)
 def_int $d = sub(stat($stat), stat_base($stat));

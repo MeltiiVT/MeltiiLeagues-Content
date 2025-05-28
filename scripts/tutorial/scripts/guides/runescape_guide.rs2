@@ -8,14 +8,28 @@ switch_int(%tutorial_progress) {
 }
 
 [label,runescape_guide_welcome]
-if (map_production = false) {
+    ~chatnpc("<p,neutral>Greetings! Before we begin with the main tutorial, you have an important choice.");
+    ~chatnpc("<p,neutral>You can select a preferred combat style. This choice is permanent, but you will be able to obtain the others far later.");
+    ~chatnpc("<p,neutral>Melee combat will see it's attack speed cut in half. You will also have 3x passive Hitpoints regenartion.");
+    ~chatnpc("<p,neutral>Ranged combat will see it's attack speed cut in half, and will consume 90% less ammunition. Your ammo will no longer drop to the floor.");
+    ~chatnpc("<p,neutral>Magic combat will see it's attack speed cut in half, and will consume 90% less runes.");
+    ~chatnpc("<p,neutral>Please choose wisely, as this cannot be reverted.");
+
+    def_int $choiceCmb = ~p_choice3("Melee - Master close-quarters combat.", 1, "Ranged - Strike foes from a distance.", 2, "Magic - Unleash powerful spells.", 3);
+    if ($choiceCmb = 1) {
+        %chosen_combat_style_buff = 1;
+    } else if ($choiceCmb = 2) {
+        %chosen_combat_style_buff = 2;
+    } else if ($choiceCmb = 3) {
+        %chosen_combat_style_buff = 3;
+    }
+
     ~chatnpc("<p,neutral>Do you want to skip the tutorial?");
     def_int $choice = ~p_choice2("Yes please.", 1, "No, thank you.", 2);
     if ($choice = 1) {
         %tutorial_progress = ^tutorial_complete;
         @tutorial_complete;
     }
-}
 
 ~chatnpc("<p,neutral>Greetings! I see you are a new arrival to this land. My|job is to welcome all the new visitors. So welcome!");
 ~chatnpc("<p,neutral>You have already learnt the first thing needed to|succeed in this world... Talking to other people!");

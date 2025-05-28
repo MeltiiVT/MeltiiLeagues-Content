@@ -139,5 +139,6 @@ if(calc(%barbarian_course_progress + 1) >= $completed) {
 }
 if(%barbarian_course_progress = 5) {
     stat_advance(agility, 420);
+    ~trail_skillingcluedrop(120, 7);
     %barbarian_course_progress = 0;
 }

@@ -38,7 +38,13 @@ if (oc_members($final_obj) = true & map_members = ^false) {
 }
 // enchanting always sets slot instead of deleting
 inv_setslot(inv, $slot, $final_obj, 1);
-~delete_spell_runes($spell_data);
+if (%chosen_combat_style_buff = 3) {
+    if (random(10) = 0) { // 1 out of 10 chance
+        ~delete_spell_runes($spell_data);
+        }
+    } else {
+        ~delete_spell_runes($spell_data);
+    }
 ~give_spell_xp($spell_data);
 
 anim($anim, 0);

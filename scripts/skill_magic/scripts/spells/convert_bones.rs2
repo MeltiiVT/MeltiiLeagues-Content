@@ -34,7 +34,13 @@ if (p_finduid(uid) = true) {
     anim($anim, 0);
     spotanim_pl($spotanim, 92, 0);
     // delete runes and give xp
-    ~delete_spell_runes($spell_data);
+    if (%chosen_combat_style_buff = 3) {
+    if (random(10) = 0) { // 1 out of 10 chance
+        ~delete_spell_runes($spell_data);
+        }
+    } else {
+        ~delete_spell_runes($spell_data);
+}
     ~give_spell_xp($spell_data);
     // doesnt delay in current osrs, but it did in early osrs:
     // https://youtu.be/OQWflbHRYLo?t=859

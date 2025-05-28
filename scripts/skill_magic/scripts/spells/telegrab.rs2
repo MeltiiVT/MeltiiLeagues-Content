@@ -55,7 +55,13 @@ sound_synth(telegrab_all, 0, 0);
 spotanim_pl(telegrab_casting, 92, 0);
 
 // delete runes
-~delete_spell_runes($spell_data);
+if (%chosen_combat_style_buff = 3) {
+    if (random(10) = 0) { // 1 out of 10 chance
+        ~delete_spell_runes($spell_data);
+    }
+} else {
+    ~delete_spell_runes($spell_data);
+}
 // delay character for 4 ticks, give item, delay character for 3 ticks
 // play mapanim
 def_int $duration = ~coord_projectile(coord, obj_coord, telegrab_travel, 35, 0, 48, 16, -2, 64, 10);

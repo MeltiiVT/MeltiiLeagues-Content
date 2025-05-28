@@ -50,10 +50,18 @@ if (npc_param(defend_sound) ! null) {
     sound_synth(npc_param(defend_sound), 0, 20); // delay npc this tick
 }
 // set the skill clock depending on the weapon attack rate
-if ($weapon = null) {
-    %action_delay = add(map_clock, 4);
-} else {
-    %action_delay = add(map_clock, oc_param($weapon, attackrate));
-}
+if (%chosen_combat_style_buff = 1)
+    {if ($weapon = null) {
+        %action_delay = add(map_clock, 2);
+    } else {
+        %action_delay = add(map_clock, divide(oc_param($weapon, attackrate),2));
+    }}
+    else
+    {if ($weapon = null) {
+        %action_delay = add(map_clock, 4);
+    } else {
+        %action_delay = add(map_clock, oc_param($weapon, attackrate));
+        }
+    }
 
 p_opnpc(2);

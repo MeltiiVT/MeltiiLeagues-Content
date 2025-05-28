@@ -28,6 +28,10 @@ inv_add(inv, $puzzle, 1);
 inv_del(inv, $current_clue, 1);
 if(~trail_clue_hard_complete = true) {
     ~trail_clue_hard_reward;
+    %hard_clues_completed = calc(%hard_clues_completed + 1);
+    mes("You've now completed <tostring(%hard_clues_completed)> Hard Clues.");
+    %clue_points = calc(%clue_points + 3);
+    mes("You've earned <tostring(3)> Clue points. You now have <tostring(%clue_points)> Clue points.");
 } else {
     def_namedobj $new_clue = ~trail_clue_hard_getrandom;
     inv_add(inv, $new_clue, 1);
@@ -39,6 +43,10 @@ if(~trail_clue_hard_complete = true) {
 inv_del(inv, $clue, 1);
 if(~trail_clue_hard_complete = true) {
     ~trail_clue_hard_reward;
+    %hard_clues_completed = calc(%hard_clues_completed + 1);
+    mes("You've now completed <tostring(%hard_clues_completed)> Hard Clues.");
+    %clue_points = calc(%clue_points + 3);
+    mes("You've earned <tostring(3)> Clue points. You now have <tostring(%clue_points)> Clue points.");
 } else {
     inv_add(inv, ~trail_clue_hard_getrandom, 1);
     ~objbox(trail_clue_hard_map001, "You've found another clue scroll!", 250, 0, 0);

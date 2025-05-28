@@ -63,6 +63,8 @@ if ($random < 10) { // osrs
     obj_add(npc_coord, shark, 4, ^lootdrop_duration);
 } else if ($random < 115) { // osrs's rune limbs
     obj_add(npc_coord, bigoysterpearls, 4, ^lootdrop_duration);
+} else if ($random < 116) { // osrs's rune limbs
+    obj_add(npc_coord, ~kbd_megararetable, ^lootdrop_duration);
 } else if ($random < 118) { // missing from osrs
     obj_add(npc_coord, mithril_battleaxe, 1, ^lootdrop_duration); // https://youtu.be/KDkdsTPeb_8?t=358
 } else if ($random < 126) { // osrs

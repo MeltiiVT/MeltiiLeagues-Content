@@ -176,6 +176,7 @@ if (random($chance) = ^true) {
         mes("You just found <~add_article(oc_name(db_getfield($data, gem_cutting_table:cut_gem, 0)))>!");
     }
 } else if (stat_random(mining, db_getfield($data, mining_table:rock_successchance, 0)) = true) {
+    def_int $mined = 0;
     if ( random(4) = 0) {
     // deplete
     def_int $respawn = ~scale_by_playercount(db_getfield($data, mining_table:rock_respawnrate, 0));
@@ -183,12 +184,15 @@ if (random($chance) = ^true) {
     loc_change(loc_param(next_loc_stage_mining), $respawn);
     sound_synth(sound_230, 0, 0); // Sudden says its sound_230
     anim(null, 0);
+    $mined = 1;
     }
     inv_add(inv, db_getfield($data, mining_table:rock_output, 0), 1);
     stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
     mes("You manage to mine some <db_getfield($data, mining_table:ore_name, 0)>.");
     ~trail_skillingcluedrop(1000, 2);
-    return;
+    if ($mined = 1) {
+        return;
+    }
 }
 p_oploc(3);
 
@@ -225,6 +229,7 @@ if (stat_random(mining, $low, $high) = true) {
     // They added a 1t p_delay in this update: https://oldschool.runescape.wiki/w/Update:Special_Attacks
     // p_delay(0);
     // deplete
+    def_int $mined = 0;
     if ( random(4) = 0) {
     def_int $respawn = ~scale_by_playercount(db_getfield($data, mining_table:rock_respawnrate, 0));
     // Temp note: dur does not need updated
@@ -232,6 +237,7 @@ if (stat_random(mining, $low, $high) = true) {
     // stop mining, give ore and xp.
     sound_synth(found_gem, 0, 0);
     anim(null, 0);
+    $mined = 1;
     }
     def_namedobj $gem;
     def_int $count;
@@ -243,7 +249,9 @@ if (stat_random(mining, $low, $high) = true) {
     $data = db_findnext;
     mes("You just mined <~add_article(oc_name(db_getfield($data, gem_cutting_table:cut_gem, 0)))>!");
     ~trail_skillingcluedrop(1000, 2);
-    return;
+    if ($mined = 1) {
+        return;
+    }
 }
 p_oploc(3);
 

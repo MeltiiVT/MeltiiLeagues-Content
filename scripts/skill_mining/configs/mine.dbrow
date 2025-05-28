@@ -110,7 +110,7 @@ data=rock_output,mithril_ore
 data=rock_level,55
 data=rock_exp,800
 data=rock_successchance,5,50
-data=rock_respawnrate,400
+data=rock_respawnrate,300
 
 [adamantite_rock_table]
 table=mining_table
@@ -123,7 +123,7 @@ data=rock_output,adamantite_ore
 data=rock_level,70
 data=rock_exp,950
 data=rock_successchance,2,25
-data=rock_respawnrate,800
+data=rock_respawnrate,400
 
 [runite_rock_table]
 table=mining_table
@@ -136,7 +136,7 @@ data=rock_output,runite_ore
 data=rock_level,85
 data=rock_exp,1250
 data=rock_successchance,1,18
-data=rock_respawnrate,2400
+data=rock_respawnrate,600
 
 // TODO: add the correct success rates here (not currently on wiki)
 // using limestone rates (lvl-10 mining req) for now

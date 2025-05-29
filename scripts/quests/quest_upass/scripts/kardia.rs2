@@ -8,12 +8,8 @@ if(testbit(%upass_map_mechanisms, ^upass_dropped_cat) = ^true) {
 }
 mes("You reach to open the door...");
 if(npc_find(coord, kardia, 8, 0) = true) {
-    //~chatnpc("<p,angry>Get away... Far away from here!"); // rs3 (and osrs I think?), no chathead until way later though...
-    npc_say("Get away... Far away from here!");
-    p_delay(1); // 2t rsc
-    mes("The witch raises her hands above her...");
-    npc_say("Ha ha... die mortal!");
-    p_delay(0); // 1t
+    // https://youtu.be/ZxF473zUZfQ?si=K3-NPTigxVgD9V9I&t=2016, no chathead
+    ~chatnpc("<p,angry>Get away... Far away from here!");
     ~damage_self(calc(((stat(hitpoints) * 25) / 100) + 1));
 }
 

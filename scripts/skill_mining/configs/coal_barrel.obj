@@ -1,0 +1,14 @@
+[coal_barrel]
+name=Coal Barrel
+desc=This thing seems endless!
+weight=1lb
+model=model_2546_obj
+cost=1
+2dyof=-5
+2dzoom=1820
+2dyan=76
+2dxan=136
+param=no_alchemy,1
+members=yes
+iop4=Check
+tradeable=no

@@ -1,0 +1,34 @@
+[opheldu,coal_barrel]
+if (last_useitem = coal | last_useitem = cert_coal) {
+    @fill_barrel;
+} else {
+    ~displaymessage(^dm_default);
+}
+
+[opheldu,coal]
+if (last_useitem = coal_barrel) {
+    @fill_barrel;
+} else {
+    ~displaymessage(^dm_default);
+}
+
+[opheldu,cert_coal]
+if (last_useitem = coal_barrel) {
+    @fill_barrel;
+} else {
+    ~displaymessage(^dm_default);
+}
+
+[label,fill_barrel]
+def_int $coal = inv_total(inv, coal);
+def_int $cert_coal = inv_total(inv, cert_coal);
+def_int $total = add($coal,$cert_coal);
+inv_del(inv, coal, $coal);
+inv_del(inv, cert_coal, $cert_coal);
+%coal_barrel_points = add(%coal_barrel_points, $total);
+def_int $coalpoints =  %coal_barrel_points;
+mes("You place the coal in the barrel. Your coal barrel now has <tostring($coalpoints)> coal stored.");
+
+[opheld4,coal_barrel] 
+def_int $coalpoints =  %coal_barrel_points;
+mes("Your coal barrel has <tostring($coalpoints)> coal remaining.");

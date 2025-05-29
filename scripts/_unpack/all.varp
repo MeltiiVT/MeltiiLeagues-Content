@@ -713,3 +713,9 @@ scope=perm
 
 [crafting_guild_freeentry]
 scope=perm
+
+[coal_barrel_owner]
+scope=perm
+
+[coal_barrel_points]
+scope=perm

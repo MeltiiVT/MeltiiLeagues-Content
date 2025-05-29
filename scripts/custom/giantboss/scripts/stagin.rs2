@@ -1,0 +1,12 @@
+[opnpc1,stagin]
+
+~chatnpc("<p,happy>Well hello there! You must be part of the research team sent to help me.");
+
+def_int $staginMenu = ~p_choice3("Uhm.. Yes that's right!", 1, "What are you doing down here?", 2, "Was this house always here?", 3);
+if ($staginMenu = 1) {
+    ~chatplayer("<p,happy>Uhm.. Yes that's right!");
+} else if ($staginMenu = 2) {
+    ~chatplayer("<p,quiz>What are you doing down here?");
+} else if ($staginMenu = 3) {
+    ~chatplayer("<p,quiz>Was this house always here?");
+}

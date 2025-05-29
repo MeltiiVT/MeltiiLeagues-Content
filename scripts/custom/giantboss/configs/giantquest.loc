@@ -6,3 +6,11 @@ width=4
 length=2
 op1=Enter
 active=yes
+
+[giantquest_corpse]
+name=Corpse
+desc=I hope I don't turn out that way.
+op1=Search
+model=model_loc_662
+width=2
+blockrange=no

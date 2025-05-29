@@ -1,0 +1,13 @@
+[giantquest_journal]
+name=Giant journal
+desc=I imagined it'd be a lot bigger.
+cost=2
+iop1=Read
+members=yes
+model=model_2794_obj
+recol1s=13472
+recol1d=21279
+2dzoom=840
+2dyan=152
+2dxan=256
+weight=18oz

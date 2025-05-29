@@ -14,6 +14,7 @@ switch_obj (%open_book) {
     case ibansdove : @book_flip_page(^book_direction_backward, 0, 2, ibanconscience);
     case digsitebook : @book_flip_page(^book_direction_backward, 0, 1, book_on_chemicals);
     case book_of_binding : @book_flip_page(^book_direction_backward, 0, 4, book_of_binding_page);
+    case giantquest_journal : @book_flip_page(^book_direction_backward, 0, 1, giantquest_journal);
 }
 p_delay(0);
 
@@ -33,6 +34,7 @@ switch_obj (%open_book) {
     case ibansdove : @book_flip_page(^book_direction_forward, 0, 2, ibanconscience);
     case digsitebook : @book_flip_page(^book_direction_forward, 0, 1, book_on_chemicals);
     case book_of_binding : @book_flip_page(^book_direction_forward, 0, 4, book_of_binding_page);
+    case giantquest_journal : @book_flip_page(^book_direction_forward, 0, 1, giantquest_journal);
 }
 p_delay(0);
 

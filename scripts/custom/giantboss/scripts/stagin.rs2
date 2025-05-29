@@ -1,6 +1,41 @@
 [opnpc1,stagin]
-~chatnpc("<p,happy>Well hello there! You must be part of the research team sent to help me.");
-@multi3("Uhm.. Yes that's right!", stagin_lie, "What are you researching?", stagin_ask, "Was this house always here?", stagin_avert);
+if (%giantquest_progress < ^giantquest_talked_to_stagin) {
+    ~chatnpc("<p,happy>Well hello there! You must be part of the research team sent to help me.");
+    @multi3("Uhm.. Yes that's right!", stagin_lie, "No sorry, what are you researching?", stagin_ask, "Was this house always here?", stagin_avert);
+} else if (%giantquest_progress = ^giantquest_complete) {
+    ~chatnpc("<p,happy>Thank you so much for your help!");
+    ~chatplayer("<p,neutral>What will you do now that we're done?");
+    ~chatnpc("<p,happy>I've gotten too used to living down here.|I think I'll just live out the rest of my life here.|I'm done with researching.");
+    return;
+} else if (%giantquest_progress = ^giantquest_talked_to_stagin) {
+    ~chatnpc("<p,quiz>So did you figure out what's taking the research team so long?");
+    if (inv_total(inv, giantquest_journal) > 0) {
+        ~chatplayer("<p,sad>I've found this journal in the caverns, I think he-");
+        ~chatnpc("<p,angry>WHAT? My last researcher quit!? Now what am I going to do!");
+        ~chatplayer("<p,quiz>Quitting's an odd way to put it...");
+        ~chatnpc("<p,sad>Is it alright if you help me find a new researcher?");
+        ~chatplayer("<p,quiz>Perhaps I could help you with your research?");
+        %giantquest_progress = ^giantquest_joined_team;
+        ~chatnpc("<p,happy>Great idea!! Why didn't you ask me sooner?");
+        ~chatnpc("<p,neutral>We need help exploring a cave in the back room. You may need a light source to see anything in there.");
+        ~chatplayer("<p,neutral>Alright.");
+    } else {
+        ~chatplayer("<p,sad>No sorry, not yet.");
+        ~chatnpc("<p,neutral>Don't talk to me until you do.");
+    }
+    return;
+} else if (%giantquest_progress = ^giantquest_joined_team) {
+    ~chatplayer("<p,neutral>What do I need to do again?");
+    ~chatnpc("<p,neutral>We need help exploring a cave in the back room. You may need a light source to see anything in there.");
+    ~chatplayer("<p,neutral>Thank you, I'll get right on it.");
+    return;
+} else if (%giantquest_progress >= ^giantquest_entered_cave & %giantquest_progress < ^giantquest_laststep) {
+    ~chatplayer("<p,neutral>I explored the cave!");
+    ~chatnpc("<p,neutral>Did you find anything interesting?");
+    ~chatplayer("<p,netrual>It's definitely a cave...");
+    ~chatnpc("<p,angry>Well keep exploring until you find something interesting!");
+    return;
+}
 
 [label,stagin_lie]
 ~chatplayer("<p,happy>Uhm.. Yes that's right!");
@@ -9,10 +44,26 @@
 ~chatnpc("<p,angry>Not like you!");
 
 [label,stagin_ask]
-~chatplayer("<p,quiz>What are you researching?");
+~chatplayer("<p,quiz>No sorry, what are you researching?");
+~chatnpc("<p,neutral>I'm helping research the mysterious origin of the giants!");
+@multi2("Would you like me to help?", stagin_offer, "Why would anyone want to research that?", stagin_insult);
 
 [label,stagin_avert]
 ~chatplayer("<p,quiz>Was this house always here?");
 ~chatnpc("<p,neutral>Well, it's been around for as long as I can remember.");
 ~chatplayer("<p,confused>I was down here not too long ago...|I don't remember this house existing.");
-~chatnpc("<p,laugh>You must have poor memory, this has always been here!");
+~chatnpc("<p,laugh>You must have a poor memory, this has always been here!");
+
+[label,stagin_offer]
+~chatplayer("<p,quiz>Would you like me to help?");
+~chatnpc("<p,laugh>You think I need your help?");
+~chatplayer("<p,neutral>Well... You had members of a research team sent to help you.");
+~chatnpc("<p,sad>I suppose you may be right...");
+
+~chatnpc("<p,neutral>I'll tell you what, you can help me find out what's taking them so long!");
+%giantquest_progress = ^giantquest_talked_to_stagin;
+~chatplayer("<p,neutral>Okay I'll see what I can do.");
+
+[label,stagin_insult]
+~chatplayer("<p,laugh>Why would anyone want to research that?");
+~chatnpc("<p,angry>You're laughing???|I've dedicated my whole life to this!|I will not let some amateur insult me!!");

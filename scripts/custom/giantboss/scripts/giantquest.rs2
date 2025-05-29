@@ -4,7 +4,23 @@ if (loc_coord = 0_38_20_31_24) {
     p_delay(0);
     p_teleport(0_48_153_14_38);
 } else if (loc_coord = 0_48_153_12_36) {
+    if (%giantquest_progress < ^giantquest_joined_team | inv_totalcat(inv, light_source_lit) < 1) {
+        ~chatplayer("<p,scared>I'm not going in there!");
+        return;
+    }
     mes("You enter the cave...");
     p_delay(0);
     p_teleport(0_38_20_32_23);
 }
+if (%giantquest_progress < ^giantquest_entered_cave) {
+    %giantquest_progress = ^giantquest_entered_cave;
+}
+
+
+[oploc1,giantquest_corpse]
+if (%giantquest_progress ! ^giantquest_talked_to_stagin | ~obj_gettotal(giantquest_journal) > 0) {
+    mes("You find nothing of interest.");
+    return;
+}
+inv_add(inv, giantquest_journal, 1);
+~objbox(giantquest_journal, "You find a journal.", 250, 0, divide(^objbox_height, 2));

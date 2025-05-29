@@ -1,0 +1,10 @@
+[opheld1,giantquest_journal]
+%book_page = 0;
+%open_book = giantquest_journal;
+@book_flip_page(0, 0, 3, giantquest_journal);
+
+[proc,giantquest_journal]
+switch_int (%book_page) {
+    case 0 : ~book("Journal", "Deep within the Edgeville Dungeon, past the Giants, we've found a previously unexplored area.||It's too dark to see anything down there and we've already lost three men - One of which left on their own accord.||I think we're running low on supplies, we need to resurface soon.||Stagin is in a foul mood and is constantly berating us. I'm not sure how much more of this I can take. I'm afraid we're going to lose another man today.");
+    case 1 : ~book("Journal", "He's asked me to leave to ask Reldo for more men, thank Saradomin! Anything to get me away from Stagin and this cave.||I'm leaving today, finally I get some fresh air for once.||I can't seem to find my way out, this isn't good - it's too dangerous down here to stay for too long.||I hope to find my way out soo----------");
+}

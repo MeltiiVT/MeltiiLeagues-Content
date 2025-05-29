@@ -9,7 +9,7 @@ switch_obj (last_useitem)
         if(loc_type = furnace_upass) @destroy_orboflight(last_useitem);
         ~displaymessage(^dm_default);
     case default :
-        if (oc_category(last_useitem) = category_91) {
+        if (oc_category(last_useitem) = category_91 | last_useitem = coal_barrel) {
             @smelt_ore(last_useitem);
         }
         ~displaymessage(^dm_default);
@@ -20,8 +20,10 @@ switch_obj (last_useitem)
 p_arrivedelay();
 // find the bar that the ore smelts to
 def_namedobj $bar = oc_param($last, smeltsto);
+
+def_int $coalpoints = %coal_barrel_points;
 // using coal on furnace assumes steel bar. If using iron on furnace and player has 2 or more coal, then assume steel bar
-if (($last = iron_ore & inv_total(inv, coal) >= 2 & stat(smithing) >= 30) | $last = coal) {
+if (($last = iron_ore & inv_total(inv, coal) >= 2 & stat(smithing) >= 30) | $last = coal | $last = coal_barrel | ($last = iron_ore & inv_total(inv, coal_barrel) > 0 & $coalpoints >= 2 & stat(smithing) >= 30)) {
     $bar = steel_bar;
 }
 // for some reason jagex has blankrune and clay in the ores category
@@ -36,7 +38,13 @@ if (stat(smithing) < struct_param($struct, levelrequired)) {
     return;
 }
 def_int $primary_total = inv_total(inv, struct_param($struct, ingredient));
-def_int $secondary_total = inv_total(inv, struct_param($struct, ingredient_secondary));
+def_int $secondary_total = 0;
+
+if (struct_param($struct, ingredient_secondary) = coal & inv_total(inv, coal_barrel) > 0) {
+$secondary_total = $coalpoints;
+} else {
+$secondary_total = inv_total(inv, struct_param($struct, ingredient_secondary));
+}
 // If not enough ores
 if ($primary_total < struct_param($struct, bar_count)) {
     ~mesbox(struct_param($struct, processfailure));
@@ -62,7 +70,13 @@ p_delay(3);
 // delete main ore
 inv_del(inv, struct_param($struct, ingredient), struct_param($struct, bar_count));
 // delete secondary ore
-if (struct_param($struct, ingredient_secondary) ! null) {
+def_int $barrelused = 0;
+
+if ((struct_param($struct, ingredient_secondary) = coal & inv_total(inv, coal_barrel) > 0)) {
+$coalpoints = sub($coalpoints, struct_param($struct, ingredient_secondary_count));
+%coal_barrel_points = $coalpoints;
+$barrelused = 1;
+} else if (struct_param($struct, ingredient_secondary) ! null) {
     inv_del(inv, struct_param($struct, ingredient_secondary), struct_param($struct, ingredient_secondary_count));
 }
 
@@ -91,6 +105,9 @@ stat_advance(smithing, $xp);
 inv_add(inv, $bar, 1);
 // display product message
 mes(struct_param($struct, productmessage));
+if ($barrelused = 1) {
+    mes("Your coal barrel has <tostring($coalpoints)> coal remaining.");
+}
 //----------------------------
 
 //************* WEAKQUEUES DIDNT EXIST UNTIL SEPT 2004 *************

@@ -1,12 +1,18 @@
 [opnpc1,stagin]
-
 ~chatnpc("<p,happy>Well hello there! You must be part of the research team sent to help me.");
+@multi3("Uhm.. Yes that's right!", stagin_lie, "What are you researching?", stagin_ask, "Was this house always here?", stagin_avert);
 
-def_int $staginMenu = ~p_choice3("Uhm.. Yes that's right!", 1, "What are you doing down here?", 2, "Was this house always here?", 3);
-if ($staginMenu = 1) {
-    ~chatplayer("<p,happy>Uhm.. Yes that's right!");
-} else if ($staginMenu = 2) {
-    ~chatplayer("<p,quiz>What are you doing down here?");
-} else if ($staginMenu = 3) {
-    ~chatplayer("<p,quiz>Was this house always here?");
-}
+[label,stagin_lie]
+~chatplayer("<p,happy>Uhm.. Yes that's right!");
+~chatnpc("<p,confused>You don't look like a researcher.|Are you sure you're from the research team?");
+~chatplayer("<p,laugh>What exactly is a researcher supposed to look like?");
+~chatnpc("<p,angry>Not like you!");
+
+[label,stagin_ask]
+~chatplayer("<p,quiz>What are you researching?");
+
+[label,stagin_avert]
+~chatplayer("<p,quiz>Was this house always here?");
+~chatnpc("<p,neutral>Well, it's been around for as long as I can remember.");
+~chatplayer("<p,confused>I was down here not too long ago...|I don't remember this house existing.");
+~chatnpc("<p,laugh>You must have poor memory, this has always been here!");

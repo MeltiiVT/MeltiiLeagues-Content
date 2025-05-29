@@ -1,0 +1,10 @@
+[oploc1,giantquest_cave_entrance]
+if (loc_coord = 0_38_20_31_24) {
+    mes("You exit the cave...");
+    p_delay(0);
+    p_teleport(0_48_153_14_38);
+} else if (loc_coord = 0_48_153_12_36) {
+    mes("You enter the cave...");
+    p_delay(0);
+    p_teleport(0_38_20_32_23);
+}

@@ -1,0 +1,8 @@
+[giantquest_cave_entrance]
+name=Cave entrance
+desc=I think I can squeeze through here...
+model=model_loc_2
+width=4
+length=2
+op1=Enter
+active=yes

@@ -1,6 +1,6 @@
 [proc,trail_clue_easy_reward]
 // Rolls math verification: https://www.youtube.com/watch?v=Er4RAFnmTvs
-def_int $rolls = calc(3 + random(3));
+def_int $rolls = calc(3 + %clue_minroll_perk + random(add(%clue_maxroll_perk,3)));
 def_int $roll = 0;
 def_int $rare = 0;
 

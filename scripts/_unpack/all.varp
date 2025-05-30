@@ -719,3 +719,10 @@ scope=perm
 
 [coal_barrel_points]
 scope=perm
+
+[clue_maxroll_perk]
+scope=perm
+
+[clue_minroll_perk]
+scope=perm
+

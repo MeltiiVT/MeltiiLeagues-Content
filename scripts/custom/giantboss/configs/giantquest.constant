@@ -1,5 +1,6 @@
 ^giantquest_talked_to_stagin = 1
 ^giantquest_joined_team = 2
 ^giantquest_entered_cave = 3
-^giantquest_laststep = 4
-^giantquest_complete = 5
+^giantquest_riddle = 4
+^giantquest_laststep = 8
+^giantquest_complete = 9

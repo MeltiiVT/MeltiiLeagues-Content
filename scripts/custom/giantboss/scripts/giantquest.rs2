@@ -24,3 +24,114 @@ if (%giantquest_progress ! ^giantquest_talked_to_stagin | ~obj_gettotal(giantque
 }
 inv_add(inv, giantquest_journal, 1);
 ~objbox(giantquest_journal, "You find a journal.", 250, 0, divide(^objbox_height, 2));
+
+[opnpc1,giantfriendly]
+~chatnpc("<p,neutral>Hello!!!asdasdjklash|asdasdasdasdasdasd|asdasdasdas");
+~chatnpc("<p,happy>Hello!!!asdasdjklash|asdasdasdasdasdasd|asdasdasdas");
+~chatnpc("<p,angry>Hello!!!asdasdjklash|asdasdasdasdasdasd|asdasdasdas");
+
+[oploc1,giantquest_rocks]
+if (stat(agility) < 30) {
+    ~mesbox("You need an Agility level of 30 to navigate this.");
+    return;
+}
+if (loc_coord = 0_38_20_34_10) { // enter
+    ~agility_exactmove(human_walk_style, 30, 2, coord, 0_38_20_35_10, 30, 94, ^exact_east, true);
+    p_delay(0);
+    say("Here we go...");
+    p_delay(0);
+    anim(human_into_sidestepl, 0);
+    ~set_readywalkturn_bas(human_ready_sidestepl, human_ready_sidestepl, human_walk_sidestepl);
+    p_teleport(0_38_20_36_10);
+    if (loc_find(0_38_20_36_10, loc_1417) = true) p_locmerge(0, 120, 0_38_20_36_10, 0_38_20_36_10);
+    p_delay(1);
+    p_teleport(0_38_20_37_10);
+    if (loc_find(0_38_20_37_10, loc_1417) = true) p_locmerge(0, 120, 0_38_20_37_10, 0_38_20_37_10);
+    p_delay(1);
+    p_teleport(0_38_20_38_10);
+    p_delay(0);
+    anim(human_outof_sidestepl, 0);
+    ~update_bas;
+    p_delay(0);
+    ~agility_exactmove(human_walk_style, 30, 2, coord, 0_38_20_40_10, 30, 94, ^exact_east, true);
+    p_delay(0);
+    mes("You miraculously make it through unscaved!");
+} else if (loc_coord = 0_38_20_39_10) {
+    ~agility_exactmove(human_walk_style, 30, 2, coord, 0_38_20_38_10, 30, 94, ^exact_west, true);
+    p_delay(0);
+    say("Here we go...");
+    p_delay(0);
+    anim(human_into_sidestep, 0);
+    ~set_readywalkturn_bas(human_ready_sidestep, human_ready_sidestep, human_walk_sidestep);
+    p_teleport(0_38_20_37_10);
+    if (loc_find(0_38_20_37_10, loc_1417) = true) p_locmerge(0, 120, 0_38_20_37_10, 0_38_20_37_10);
+    p_delay(1);
+    p_teleport(0_38_20_36_10);
+    if (loc_find(0_38_20_36_10, loc_1417) = true) p_locmerge(0, 120, 0_38_20_36_10, 0_38_20_36_10);
+    p_delay(1);
+    p_teleport(0_38_20_35_10);
+    p_delay(0);
+    anim(human_outof_sidestep, 0);
+    ~update_bas;
+    p_delay(0);
+    ~agility_exactmove(human_walk_style, 30, 2, coord, 0_38_20_33_10, 30, 94, ^exact_west, true);
+    p_delay(0);
+    mes("You miraculously make it through unscaved!");
+}
+stat_advance(agility, 500);
+
+[oploc1,giantquest_stonejump] @giantquest_stonejump;
+[aploc1,giantquest_stonejump]
+if (distance(coord, loc_coord) > 3) {
+    p_aprange(3);
+    return;
+}
+@giantquest_stonejump;
+
+[label,giantquest_stonejump]
+if (stat(agility) < 50) {
+    ~mesbox("You need an Agility level of 50 to attempt this jump.");
+    return;
+}
+if (inzone(0_38_20_41_13, 0_38_20_46_16, coord) = true) {
+    ~forcewalk2(0_38_20_43_14);
+    facesquare(0_38_20_43_16);
+    p_delay(0);
+    ~set_readywalk_bas(human_running, human_running);
+    p_teleport(0_38_20_43_16);
+    p_delay(0);
+    ~update_bas;
+    ~agility_exactmove(human_spot_jump, 0, 1, coord, 0_38_20_43_20, 15, 30, ^exact_north, false);
+    mes("You manage to jump across the gap.");
+    stat_advance(agility, 100);
+} else if (inzone(0_38_20_41_20, 0_38_20_47_24, coord) = true) {
+    ~forcewalk2(0_38_20_43_22);
+    facesquare(0_38_20_43_20);
+    p_delay(0);
+    ~set_readywalk_bas(human_running, human_running);
+    p_teleport(0_38_20_43_20);
+    p_delay(0);
+    ~update_bas;
+    ~agility_exactmove(human_spot_jump, 0, 1, coord, 0_38_20_43_16, 15, 30, ^exact_south, false);
+    mes("You manage to jump across the gap.");
+    stat_advance(agility, 100);
+}
+
+[oploc1,giantquest_railing]
+p_delay(0);
+def_coord $start = movecoord(coord, calc(coordx(loc_coord) - coordx(coord)), 0, 0); 
+if(~check_axis(coord, loc_coord, loc_angle) = false) {
+    ~set_readywalk_bas(human_ready_sidestepl, human_walk_sidestepl);
+    anim(human_into_sidestepl, 0);
+    p_teleport(movecoord($start, 0, 0, 1));
+    p_delay(1);
+    anim(human_outof_sidestepl, 0);
+} else {
+    ~set_readywalk_bas(human_ready_sidestep, human_walk_sidestep);
+    anim(human_into_sidestep, 0);
+    p_teleport(movecoord($start, 0, 0, -1));
+    p_delay(1);
+    anim(human_outof_sidestep, 0);
+}
+~update_bas;
+mes("You squeeze through the loose railing.");

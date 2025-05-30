@@ -14,3 +14,56 @@ op1=Search
 model=model_loc_662
 width=2
 blockrange=no
+
+[giantquest_rocks]
+name=Cave rocks
+desc=This seems dangerous.
+model=model_loc_453
+op1=Navigate
+mapscene=12
+blockrange=no
+recol1s=6342
+recol1d=15749
+
+[giantquest_giantcave]
+model=model_loc_2
+width=5
+length=3
+active=no
+resizex=180
+resizey=180
+resizez=180
+
+[giantquest_stonejump]
+name=Stepping stone
+desc=Aren't these supposed to be ontop of the lava?
+model=model_loc_2311
+op1=Jump-across
+active=yes
+blockwalk=no
+blockrange=no
+
+[giantquest_railing]
+name=Loose Railing
+desc=Hmmm... I wonder if it's loose enough to get through.
+model=model_loc_14
+sharelight=yes
+hillskew=yes
+op1=Squeeze-through
+
+[giantquest_door1]
+name=Giant door
+desc=That's one big door!
+model=model_loc_1513
+sharelight=yes
+occlude=yes
+op1=Open
+
+[giantquest_door2]
+name=Giant door
+desc=That's one big door!
+model=model_loc_1513
+sharelight=yes
+occlude=yes
+mirror=yes
+op1=Open

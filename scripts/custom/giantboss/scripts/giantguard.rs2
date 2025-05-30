@@ -1,0 +1,62 @@
+[ai_timer,giantguard]
+if (npc_getmode = none) {
+    npc_facesquare(movecoord(npc_coord, 1000, 0, 0));
+
+}
+
+[opnpc1,giantguard]
+npc_findall(npc_coord, giantguard, 5, 0);
+if (.npc_find(npc_coord, giantguard2, 5, 0) = true) .npc_setmode(playerfaceclose);
+~chatnpc("<p,angry>YOU NOT GIANT. WHY HERE?");
+@multi4("What does it take to get in?", giantguard_ask, "I'm a small giant!", giantguard_joke2, "Why are you yelling at me?", giantguard_joke, "Uhhh sorry wrong cave!", giantguard_leave);
+
+[label,giantguard_leave]
+~chatplayer("<p,scared>Uhhh sorry wrong cave!");
+
+[label,giantguard_joke]
+~chatplayer("<p,scared>Why are you yelling at me?");
+~chatnpc("<p,confused>WHAT IS YELLING?");
+~chatplayer("<p,angrry>You're speaking very loudly.");
+~chatnpc("<p,angry>YOU SPEAKING VERY SMALL! I NOT HEAR YOU.");
+@multi4("What does it take to get in?", giantguard_ask, "I'm a small giant!", giantguard_joke2, "Why are you yelling at me?", giantguard_joke, "Uhhh sorry wrong cave!", giantguard_leave);
+
+[label,giantguard_joke2]
+~chatplayer("<p,shifty>I'm a small giant!");
+~chatnpc("<p,angry>WE NO STUPID! YOU NOT BELONG HERE!");
+if (.npc_find(npc_coord, giantguard2, 5, 0) = true) ~.npc_retaliate(0);
+~npc_retaliate(0);
+
+[label,giantguard_ask]
+~chatplayer("<p,quiz>What does it take to get in?");
+~chatnpc("<p,angry>NO HUMAN ALLOWED! GO AWAY!");
+def_int $choice = ~p_choice2("Surely there's something I can help you with?", 1, "Welp, I guess I should go then.", 2);
+if ($choice = 2) {
+    ~chatplayer("<p,sad>Welp, I guess I should go then.");
+    return;
+}
+~chatplayer("<p,quiz>Surely there's something I can help you with?");
+if (.npc_find(npc_coord, giantguard2, 5, 0) = true) {
+    npc_setmode(wander); // prevents timer from turning them
+    .npc_setmode(wander);
+    npc_facesquare(.npc_coord);
+    .npc_facesquare(npc_coord);
+}
+p_delay(0);
+npc_say("WHAT DID SMALL HUMAN SAY?");
+p_delay(0);
+.npc_say("ME NO KNOW.");
+p_delay(0);
+.npc_setmode(playerfaceclose);
+~chatnpc("<p,neutral>SPEAK UP HUMAN PLEASE!");
+~chatplayer("<p,angry>I SAID WHAT DOES IT TAKE TO GET IN?!");
+~chatnpc("<p,neutral>OH ME UNDERSTAND NOW. YOU WANT TO ENTER?");
+~chatplayer("<p,angry>YES!!");
+~chatnpc("<p,angry>SMALL HUMAN MUST PROVE ITSELF!");
+~chatplayer("<p,quiz>How do I prove myself?");
+~chatnpc("<p,confused>WHAT?");
+~chatplayer("<p,angry>HOW DO I PROVE MYSELF?");
+~chatnpc("<p,neutral>FOR HUMAN TO PROVE ITSELF, BRING ME SOMETHING TO EAT!");
+~chatplayer("<p,neutral>WHAT DO YOU GIANTS EAT?");
+%giantquest_progress = ^giantquest_riddle;
+~chatnpc("<p,neutral>ME FIND RED SLAB IN MAN-PLACE BIN.|NOT FISH, NOT BIRD, NO SCALY SKIN.|ME TRY COOK - FIRE GOOD TASTE.| ME TRY EAT RAW - GET BAD TUMMY ACHE.");
+~chatplayer("<p,neutral>I'LL SEE WHAT I CAN DO.");

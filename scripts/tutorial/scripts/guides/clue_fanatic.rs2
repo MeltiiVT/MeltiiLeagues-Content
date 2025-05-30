@@ -109,7 +109,7 @@ if (%clue_maxroll_perk = 0) {
     if ($confirmPurchase = 1) {
         if (%clue_points > 24) {
                 %clue_points = sub(%clue_points,25);
-                mes("You've increased your minimum roll for all clues by 1!");
+                mes("You've increased your maximum roll for all clues by 1!");
                 mes("You have <tostring(%clue_points)> Clue Points remaining.");
                 %clue_maxroll_perk = 1;
             } else {
@@ -119,13 +119,13 @@ if (%clue_maxroll_perk = 0) {
             ~chatplayer("<p,neutral>Nevermind, not today.");
         }
 } else if (%clue_maxroll_perk = 1) {
-    ~chatnpc("<p,neutral>This perk will increase your minimum reward roll on all clues by an additional 1.| This costs 100 Clue Points.");
+    ~chatnpc("<p,neutral>This perk will increase your maximum reward roll on all clues by an additional 1.| This costs 100 Clue Points.");
     ~chatnpc("<p,neutral>You currently have <tostring(%clue_points)> Clue Points. Would you like to purchase this?");
     def_int $confirmPurchase = ~p_choice2("Yes - Purchase", 1, "No - Do not Purchase", 2);
     if ($confirmPurchase = 1) {
         if (%clue_points > 99) {
                 %clue_points = sub(%clue_points,100);
-                mes("You've increased your minimum roll for all clues by 1!");
+                mes("You've increased your maximum roll for all clues by 1!");
                 mes("You have <tostring(%clue_points)> Clue Points remaining.");
                 %clue_maxroll_perk = 2;
             } else {
@@ -135,13 +135,13 @@ if (%clue_maxroll_perk = 0) {
             ~chatplayer("<p,neutral>Nevermind, not today.");
         }
 } else if (%clue_maxroll_perk = 2) {
-    ~chatnpc("<p,neutral>This perk will increase your minimum reward roll on all clues by an additional 1.| This costs 200 Clue Points.");
+    ~chatnpc("<p,neutral>This perk will increase your maximum reward roll on all clues by an additional 1.| This costs 200 Clue Points.");
     ~chatnpc("<p,neutral>You currently have <tostring(%clue_points)> Clue Points. Would you like to purchase this?");
     def_int $confirmPurchase = ~p_choice2("Yes - Purchase", 1, "No - Do not Purchase", 2);
     if ($confirmPurchase = 1) {
         if (%clue_points > 199) {
                 %clue_points = sub(%clue_points,200);
-                mes("You've increased your minimum roll for all clues by 1!");
+                mes("You've increased your maximum roll for all clues by 1!");
                 mes("You have <tostring(%clue_points)> Clue Points remaining.");
                 %clue_maxroll_perk = 3;
             } else {

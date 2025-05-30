@@ -27,16 +27,18 @@ if (random(2) = 1) {
 
 [proc,cracker_partyhat]()(namedobj)
 def_int $rng = random(128);
-if ($rng < 10) {
+if ($rng < 18) {
     return(purple_partyhat);
-} else if ($rng < 25) {
+} else if ($rng < 36) {
     return(blue_partyhat);
-} else if ($rng < 45) {
+} else if ($rng < 54) {
     return(green_partyhat);
-} else if ($rng < 68) {
+} else if ($rng < 72) {
     return(white_partyhat);
-} else if ($rng < 96) {
+} else if ($rng < 90) {
     return(yellow_partyhat);
+} else if ($rng < 108) {
+    return(pink_partyhat);
 }
 return(red_partyhat);
 

@@ -1394,3 +1394,63 @@ param=slashdefence,48
 param=crushdefence,46
 param=magicdefence,-1
 param=rangedefence,46
+
+[yellow_shirt]
+name=Yellow shirt
+desc=A classy shirt, in yellow.
+cost=40
+model=model_2786_obj
+recol1s=14724
+recol1d=31649
+2dyof=7
+2dzoom=1370
+2dxan=536
+iop2=Wear
+wearpos=torso
+wearpos2=arms
+manwear=model_292_idk,0
+manwear2=model_151_idk
+womanwear=model_456_idk,0
+womanwear2=model_332_idk
+weight=1lb
+members=yes
+
+[red_apron]
+name=Red apron
+desc=A somewhat familiar apron.
+cost=2
+model=model_2592_obj
+recol1s=32767
+recol1d=15492
+recol2s=32735
+recol2d=15492
+2dxof=-4
+2dyof=-4
+2dzoom=1580
+2dyan=172
+2dxan=544
+iop2=Wear
+wearpos=torso
+manwear=model_305_obj_wear,0
+womanwear=model_467_obj_wear,0
+weight=1lb
+members=yes
+
+[pink_partyhat]
+name=Pink partyhat
+desc=A nice hat from a cracker.
+model=model_2635_obj
+recol1s=15360
+recol1d=30777
+2dxof=1
+2dyof=1
+2dzoom=440
+2dyan=1852
+2dxan=76
+iop2=Wear
+wearpos=hat
+manwear=model_187_obj_wear,0
+womanwear=model_363_obj_wear,0
+manhead=model_29_obj_wear
+womanhead=model_87_obj_wear
+weight=2oz

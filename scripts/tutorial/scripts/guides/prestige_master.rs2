@@ -545,8 +545,8 @@ if ($prestigeMiscSkillsMenu = 1) {
         }
     } else if ($prestigeMiscSkillsMenu = 4) {
         @prestigemaster_prestigeskillsmenu;
-}////////////
-
+}
+//End Prestiging, Start Perk Upgrades
 [label,prestigemaster_skillsmenu]
 def_int $prestigeSkillsMenu = ~p_choice5("Combat Skills", 1, "Processing Skills", 2, "Gathering Skills", 3, "Misc Skills", 4, "Nevermind", 5);
 
@@ -572,7 +572,7 @@ if ($prestigeCombatSkillsMenu = 1) {
     } else if ($prestigeCombatSkillsMenu = 3) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeCombatSkillsMenu = 4) {
-        ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
+        @prestigemaster_rangedmenu;
     } else if ($prestigeCombatSkillsMenu = 5) {
     @prestigemaster_combatskillsmenu2;
 }
@@ -646,6 +646,32 @@ if ($prestigeMiscSkillsMenu = 1) {
         @prestigemaster_skillsmenu;
 }
 
+[label,prestigemaster_rangedmenu]
+def_int $prestigeRangedMenu = ~p_choice3("Ranged Strength Increase", 1, "Double Hide Drops", 2, "Go Back", 3);
+
+if ($prestigeRangedMenu = 1) {
+        ~chatnpc("<p,neutral>This perk is not yet available, sorry.");
+    } else if ($prestigeRangedMenu = 2) {
+          ~chatnpc("<p,neutral>This perk will make cows and dragons drop double the amount of hides.| Are you sure you wish to use your Ranged prestige point?");
+        def_int $prestigeRangedDoubleHide = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeRangedDoubleHide = 1 & %prestigeranged_3 = 0) {
+            if (%prestigepoint_ranged > 0) {
+            %prestigepoint_ranged = sub(%prestigepoint_ranged,1);
+            %prestigeranged_3 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! Cows and Dragons will now drop double the amount of hides.");
+            mes("You now have <tostring(%prestigepoint_ranged)> Ranged prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough Ranged prestige points.");
+            }
+        } else if ($prestigeRangedDoubleHide = 1) {
+            ~chatnpc("<p,neutral>You already have this perk.");
+        } else if ($prestigeRangedDoubleHide = 2) {
+            @prestigemaster_rangedmenu;
+        }
+    } else if ($prestigeRangedMenu = 3) {
+        @prestigemaster_skillsmenu;
+}
+
 [label,prestigemaster_magicmenu]
 def_int $prestigeMagicMenu = ~p_choice3("Increased Magic Damage", 1, "Superheat Hides", 2, "Go Back", 3);
 
@@ -659,13 +685,14 @@ if ($prestigeMagicMenu = 1) {
             %prestigepoint_magic = sub(%prestigepoint_magic,1);
             %prestigemagic_3 = 1;
             ~chatnpc("<p,neutral>Perk unlocked! You can now tan hides with the Superheat spell.");
+            mes("You now have <tostring(%prestigepoint_magic)> Ranged prestige points remaining.");
             } else {
                 ~chatnpc("<p,neutral>You do not have enough Magic prestige points.");
             }
         } else if ($prestigeMagicDoubleLoot = 1) {
             ~chatnpc("<p,neutral>You already have this perk.");
         } else if ($prestigeMagicDoubleLoot = 2) {
-            @prestigemaster_thievingmenu;
+            @prestigemaster_magicmenu;
         }
     } else if ($prestigeMagicMenu = 3) {
         @prestigemaster_skillsmenu;
@@ -683,7 +710,8 @@ if ($prestigeThievingMenu = 1) {
             if (%prestigepoint_thieving > 0) {
             %prestigepoint_thieving = sub(%prestigepoint_thieving,1);
             %prestigethieving_2 = 1;
-            ~chatnpc("<p,neutral>Perk unlocked! Your thieving success chance has been increased.");
+            ~chatnpc("<p,neutral>Perk unlocked! You will now receive double loot from thieving..");
+            mes("You now have <tostring(%prestigepoint_thieving)> Ranged prestige points remaining.");
             } else {
                 ~chatnpc("<p,neutral>You do not have enough thieving prestige points.");
             }

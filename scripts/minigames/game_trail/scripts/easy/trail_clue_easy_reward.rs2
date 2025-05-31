@@ -70,7 +70,7 @@ switch_int ($random) {
 }
 
 [proc,trail_clue_easy_rare]
-def_int $random = random(15);
+def_int $random = random(16);
 
 switch_int ($random) {
     case 0 : inv_add(trail_rewardinv, black_platebody_trim, 1);
@@ -88,6 +88,7 @@ switch_int ($random) {
     case 12 : inv_add(trail_rewardinv, boots_wizard, 1);
     case 13 : inv_add(trail_rewardinv, red_apron, 1);
     case 14 : inv_add(trail_rewardinv, yellow_shirt, 1);
+    case 15 : inv_add(trail_rewardinv, berret_olive, 1);
 }
 
 [proc,trail_clue_easy_mega_rare]

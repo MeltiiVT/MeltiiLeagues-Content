@@ -145,7 +145,11 @@ if (random($chance) = ^true) {
     inv_add(inv, $output, 1);
     stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
     mes("You manage to mine some <db_getfield($data, mining_table:ore_name, 0)>.");
-    ~trail_skillingcluedrop(1000, 2);
+    if (%clue_skillingchance_perk = 1) {
+        ~trail_skillingcluedrop(500, 2);
+    } else {
+        ~trail_skillingcluedrop(1000, 2);
+    }
     if ($mined = 1) {
         return;
     }
@@ -189,7 +193,11 @@ if (random($chance) = ^true) {
     inv_add(inv, db_getfield($data, mining_table:rock_output, 0), 1);
     stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
     mes("You manage to mine some <db_getfield($data, mining_table:ore_name, 0)>.");
-    ~trail_skillingcluedrop(1000, 2);
+    if (%clue_skillingchance_perk = 1) {
+        ~trail_skillingcluedrop(500, 2);
+    } else {
+        ~trail_skillingcluedrop(1000, 2);
+    }
     if ($mined = 1) {
         return;
     }
@@ -248,7 +256,11 @@ if (stat_random(mining, $low, $high) = true) {
     db_find(gem_cutting_table:uncut_gem, $gem);
     $data = db_findnext;
     mes("You just mined <~add_article(oc_name(db_getfield($data, gem_cutting_table:cut_gem, 0)))>!");
-    ~trail_skillingcluedrop(1000, 2);
+    if (%clue_skillingchance_perk = 1) {
+        ~trail_skillingcluedrop(500, 2);
+    } else {
+        ~trail_skillingcluedrop(1000, 2);
+    }
     if ($mined = 1) {
         return;
     }

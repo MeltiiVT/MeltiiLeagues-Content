@@ -30,7 +30,7 @@ if(~trail_clue_easy_complete = true) {
 [opheld1,_trail_casket_easy] ~progress_clue_easy(last_item, "You've found another clue scroll!");
 
 [proc,trail_clue_easy_complete]()(boolean)
-if(~get_trail_progress >= ^trail_easy_maxsteps | (add(~get_trail_progress, 2) >= ^trail_easy_maxsteps & random(2) = 0)) {
+if(~get_trail_progress >= sub(^trail_easy_maxsteps,%clue_maxstep_perk) | (add(add(~get_trail_progress, 2),%clue_minstep_perk) >= ^trail_easy_maxsteps & random(2) = 0)) {
     return (true);
 }
 return(false);

@@ -28,7 +28,11 @@ anim(human_pickpocket, 0);
 stat_advance(thieving, $experience);
 sound_synth(pick, 0, 0);
 mes("You pick the <$pocket>.");
-~trail_skillingcluedrop(1000, 4);
+if (%clue_skillingchance_perk = 1) {
+        ~trail_skillingcluedrop(500, 4);
+    } else {
+        ~trail_skillingcluedrop(1000, 4);
+    }
 
 [proc,check_if_success_pick_pocket](dbrow $data)(boolean)
 return(stat_random(thieving, db_getfield($data, pickpocket:success_chance, 0)));
@@ -103,7 +107,11 @@ if (%prestigethieving_2 = 1) {
 stat_advance(thieving, $experience);
 // Temp note: dur does not need updated
 loc_change(market_stall, $respawn_ticks);
-~trail_skillingcluedrop(750, 5);
+if (%clue_skillingchance_perk = 1) {
+        ~trail_skillingcluedrop(375, 5);
+    } else {
+        ~trail_skillingcluedrop(750, 5);
+    }
 
 [label,activate_trapped_chest]
 p_arrivedelay;
@@ -151,7 +159,11 @@ if (db_getfieldcount($data, trapped_chest:tele_coord) > 0) {
     p_teleport(db_getfield($data, trapped_chest:tele_coord, 0));
 }
 loc_change(loc_2572, $respawn_ticks); //looted chest
-~trail_skillingcluedrop(750, 6);
+if (%clue_skillingchance_perk = 1) {
+        ~trail_skillingcluedrop(375, 6);
+    } else {
+        ~trail_skillingcluedrop(750, 6);
+    }
 
 
 [proc,pick_pocket_check_for_reward](dbrow $data)

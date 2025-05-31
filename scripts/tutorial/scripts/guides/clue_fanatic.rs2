@@ -39,14 +39,26 @@ def_int $choiceShop = ~p_choice2("Port Sarim Teleport", 1, "Go Back", 2);
     }
 
 [label,cluefanatic_perks]
-def_int $choiceShop = ~p_choice3("Additional Clue Min Roll (<tostring(%clue_minroll_perk)>/3)", 1, "Additional Clue Max Roll (<tostring(%clue_maxroll_perk)>/3)", 2, "Go Back", 3);
+def_int $choiceShop = ~p_choice5("Additional Clue Min Roll (<tostring(%clue_minroll_perk)>/3)", 1, "Additional Clue Max Roll (<tostring(%clue_maxroll_perk)>/3)", 2, "Reduce Clue Scroll Max Steps", 3, "Reduce Clue Scroll Min Steps", 4, "More Options", 5);
     if ($choiceShop = 1) {
         @cluefanatic_minroll;
     } else if ($choiceShop = 2) {
         @cluefanatic_maxroll;
     } else if ($choiceShop = 3) {
-        @cluefanatic_dialogue;
+        @cluefanatic_maxsteps;
+    } else if ($choiceShop = 4) {
+        @cluefanatic_minsteps;
+    } else if ($choiceShop = 5) {
+        @cluefanatic_perks2;
     }
+
+[label,cluefanatic_perks2]
+def_int $choiceShop = ~p_choice2("Double Chance to Receive Clues From Skilling", 1, "Go Back", 2);
+    if ($choiceShop = 1) {
+        @cluefanatic_skillingchance;
+    } else if ($choiceShop = 2) {
+        @cluefanatic_dialogue;
+    } 
 
 [label,cluefanatic_minroll]
 if (%clue_minroll_perk = 0) {
@@ -152,4 +164,67 @@ if (%clue_maxroll_perk = 0) {
         }
 } else if (%clue_maxroll_perk = 3) {
     ~chatnpc("<p,quiz>Sorry you have the max level of this perk.");
+}
+
+[label,cluefanatic_maxsteps]
+if (%clue_maxstep_perk = 0) {
+    ~chatnpc("<p,neutral>This perk will reduce the maximum steps of all clues by 1.| This costs 75 Clue Points.");
+    ~chatnpc("<p,neutral>You currently have <tostring(%clue_points)> Clue Points. Would you like to purchase this?");
+    def_int $confirmPurchase = ~p_choice2("Yes - Purchase", 1, "No - Do not Purchase", 2);
+    if ($confirmPurchase = 1) {
+        if (%clue_points > 74) {
+                %clue_points = sub(%clue_points,75);
+                mes("You've reduced the maximum steps of all clues by 1!");
+                mes("You have <tostring(%clue_points)> Clue Points remaining.");
+                %clue_maxstep_perk = 1;
+            } else {
+                ~chatnpc("<p,quiz>You don't have enough Clue Points to purchase this.");
+            }
+        } else if ($confirmPurchase = 2) {
+            ~chatplayer("<p,neutral>Nevermind, not today.");
+        }
+} else if (%clue_maxstep_perk = 1) {
+    ~chatnpc("<p,quiz>Sorry you already have this perk.");
+}
+
+[label,cluefanatic_minsteps]
+if (%clue_minstep_perk = 0) {
+    ~chatnpc("<p,neutral>This perk will reduce the minimum steps of all clues by 1.| This costs 125 Clue Points.");
+    ~chatnpc("<p,neutral>You currently have <tostring(%clue_points)> Clue Points. Would you like to purchase this?");
+    def_int $confirmPurchase = ~p_choice2("Yes - Purchase", 1, "No - Do not Purchase", 2);
+    if ($confirmPurchase = 1) {
+        if (%clue_points > 124) {
+                %clue_points = sub(%clue_points,125);
+                mes("You've reduced the minimum steps of all clues by 1!");
+                mes("You have <tostring(%clue_points)> Clue Points remaining.");
+                %clue_minstep_perk = 1;
+            } else {
+                ~chatnpc("<p,quiz>You don't have enough Clue Points to purchase this.");
+            }
+        } else if ($confirmPurchase = 2) {
+            ~chatplayer("<p,neutral>Nevermind, not today.");
+        }
+} else if (%clue_minstep_perk = 1) {
+    ~chatnpc("<p,quiz>Sorry you already have this perk.");
+}
+
+[label,cluefanatic_skillingchance]
+if (%clue_skillingchance_perk = 0) {
+    ~chatnpc("<p,neutral>This perk will double the chance of receiving clues from all skilling methods.| This costs 35 Clue Points.");
+    ~chatnpc("<p,neutral>You currently have <tostring(%clue_points)> Clue Points. Would you like to purchase this?");
+    def_int $confirmPurchase = ~p_choice2("Yes - Purchase", 1, "No - Do not Purchase", 2);
+    if ($confirmPurchase = 1) {
+        if (%clue_points > 34) {
+                %clue_points = sub(%clue_points,35);
+                mes("You've reduced the minimum steps of all clues by 1!");
+                mes("You have <tostring(%clue_points)> Clue Points remaining.");
+                %clue_skillingchance_perk = 1;
+            } else {
+                ~chatnpc("<p,quiz>You don't have enough Clue Points to purchase this.");
+            }
+        } else if ($confirmPurchase = 2) {
+            ~chatplayer("<p,neutral>Nevermind, not today.");
+        }
+} else if (%clue_skillingchance_perk = 1) {
+    ~chatnpc("<p,quiz>Sorry you already have this perk.");
 }

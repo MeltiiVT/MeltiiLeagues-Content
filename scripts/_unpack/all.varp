@@ -726,3 +726,11 @@ scope=perm
 [clue_minroll_perk]
 scope=perm
 
+[clue_maxstep_perk]
+scope=perm
+
+[clue_minstep_perk]
+scope=perm
+
+[clue_skillingchance_perk]
+scope=perm

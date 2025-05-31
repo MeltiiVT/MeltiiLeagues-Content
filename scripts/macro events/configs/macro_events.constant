@@ -4,6 +4,7 @@
 ^macro_mysterious_old_man = 4
 
 ^macro_triffidseed = 5
+^macro_event_normal_dwarf = 6
 
 ^macro_bigfish = 6
 
@@ -24,6 +25,10 @@
 ^drunken_dwarf_normal = 0
 ^drunken_dwarf_angry = -2
 ^drunken_dwarf_happy = -1
+
+^normal_dwarf_normal = 0
+^normal_dwarf_angry = -2
+^normal_dwarf_happy = -1
 
 ^genie_happy = -1
 

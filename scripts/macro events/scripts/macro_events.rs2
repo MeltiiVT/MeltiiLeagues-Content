@@ -42,6 +42,7 @@ switch_int ($event) {
     case ^macro_event_drunken_dwarf : ~macro_event_drunken_dwarf_spawn;
     case ^macro_geni : ~macro_geni_spawn;
     case ^macro_mysterious_old_man : ~macro_mysterious_old_man_spawn;
+    case ^macro_event_normal_dwarf : ~macro_event_normal_dwarf_spawn;
 }
 
 [proc,macro_event_area](coord $coord)(boolean)

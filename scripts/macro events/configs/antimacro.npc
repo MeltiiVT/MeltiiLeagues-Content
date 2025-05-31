@@ -1746,3 +1746,22 @@ wanderrange=0
 moverestrict=nomove
 category=memberfish
 param=is_whirlpool,^true
+
+[macro_event_normal_dwarf]
+vislevel=hide
+name=Normal Dwarf
+desc=Hasn't had a drink today.
+walkanim=dwarf_walk
+readyanim=dwarf_ready
+op1=Talk-to
+model1=model_2970_npc
+model2=model_2981_npc
+model3=model_2979_npc
+model4=model_2983_npc
+model5=model_2985_npc
+model6=model_2990_npc
+head1=model_1_npc_head
+wanderrange=10
+maxrange=10
+timer=10
+param=follow_player_on_logout,^true

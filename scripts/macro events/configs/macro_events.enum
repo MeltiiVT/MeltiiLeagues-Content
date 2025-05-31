@@ -6,6 +6,7 @@ val=2,macro_geni
 val=3,macro_event_drunken_dwarf
 val=4,macro_mysterious_old_man
 val=5,macro_triffidseed
+val=6,macro_event_normal_dwarf
 
 [general_macro_events_free]
 inputtype=int
@@ -14,6 +15,7 @@ val=1,macro_swarm
 val=2,macro_geni
 val=3,macro_event_drunken_dwarf
 val=4,macro_mysterious_old_man
+val=5,macro_event_normal_dwarf
 
 [macro_event_zombie_levels]
 inputtype=int

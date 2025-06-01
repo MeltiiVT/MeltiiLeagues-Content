@@ -628,7 +628,7 @@ if ($prestigeGatheringSkillsMenu = 1) {
     } else if ($prestigeGatheringSkillsMenu = 2) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeGatheringSkillsMenu = 3) {
-        ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
+        @prestigemaster_woodcuttingmenu;
     } else if ($prestigeGatheringSkillsMenu = 4) {
         @prestigemaster_skillsmenu;
 }
@@ -710,7 +710,7 @@ if ($prestigeThievingMenu = 1) {
             if (%prestigepoint_mining > 0) {
             %prestigepoint_mining = sub(%prestigepoint_mining,1);
             %prestigemining_3 = 1;
-            ~chatnpc("<p,neutral>Perk unlocked! You will now receive double loot from thieving..");
+            ~chatnpc("<p,neutral>Perk unlocked! Your mined essence will go directly to the bank.");
             mes("You now have <tostring(%prestigepoint_mining)> Mining prestige points remaining.");
             } else {
                 ~chatnpc("<p,neutral>You do not have enough mining prestige points.");
@@ -718,6 +718,79 @@ if ($prestigeThievingMenu = 1) {
         } else if ($prestigeBankedEss = 1) {
             ~chatnpc("<p,neutral>You already have this perk.");
         } else if ($prestigeBankedEss = 2) {
+            @prestigemaster_miningmenu;
+        }
+    } else if ($prestigeThievingMenu = 3) {
+        @prestigemaster_skillsmenu;
+}
+
+[label,prestigemaster_woodcuttingmenu]
+def_int $prestigeThievingMenu = ~p_choice3("Double Wood Chopped (<tostring(%prestigewoodcutting_1)>/3)", 1, "Double Success Rolls", 2, "Go Back", 3);
+
+if ($prestigeThievingMenu = 1) {
+    if (%prestigewoodcutting_1 = 0) {
+        ~chatnpc("<p,neutral>You'll have a 50% chance to receive an extra log in your bank when cutting wood.| Are you sure you wish to use your woodcutting prestige point?");
+        def_int $prestigeDoubleWood = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeDoubleWood = 1) {
+            if (%prestigepoint_woodcutting > 0) {
+            %prestigepoint_woodcutting = sub(%prestigepoint_woodcutting,1);
+            %prestigewoodcutting_1 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! You now have a 50% chance to receive an extra log while woodcutting!");
+            mes("You now have <tostring(%prestigepoint_woodcutting)> Woodcutting prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough woodcutting prestige points.");
+            }
+        } else if ($prestigeDoubleWood = 2) {
+            @prestigemaster_miningmenu;
+        }
+    } else if (%prestigewoodcutting_1 = 1) {
+        ~chatnpc("<p,neutral>You'll have a 75% chance to receive an extra log in your bank when cutting wood.| Are you sure you wish to use your woodcutting prestige point?");
+        def_int $prestigeDoubleWood = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeDoubleWood = 1) {
+            if (%prestigepoint_woodcutting > 0) {
+            %prestigepoint_woodcutting = sub(%prestigepoint_woodcutting,1);
+            %prestigewoodcutting_1 = 2;
+            ~chatnpc("<p,neutral>Perk unlocked! You now have a 75% chance to receive an extra log while woodcutting!");
+            mes("You now have <tostring(%prestigepoint_woodcutting)> Woodcutting prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough woodcutting prestige points.");
+            }
+        } else if ($prestigeDoubleWood = 2) {
+            @prestigemaster_miningmenu;
+        }
+    } else if (%prestigewoodcutting_1 = 2) {
+        ~chatnpc("<p,neutral>You'll have a 100% chance to receive an extra log in your bank when cutting wood.| Are you sure you wish to use your woodcutting prestige point?");
+        def_int $prestigeDoubleWood = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeDoubleWood = 1) {
+            if (%prestigepoint_woodcutting > 0) {
+            %prestigepoint_woodcutting = sub(%prestigepoint_woodcutting,1);
+            %prestigewoodcutting_1 = 3;
+            ~chatnpc("<p,neutral>Perk unlocked! You now have a 100% chance to receive an extra log while woodcutting!");
+            mes("You now have <tostring(%prestigepoint_woodcutting)> Woodcutting prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough woodcutting prestige points.");
+            }
+        } else if ($prestigeDoubleWood = 2) {
+            @prestigemaster_miningmenu;
+        } else if ($prestigeDoubleWood = 3) {
+            ~chatnpc("<p,neutral>This perk is fully upgraded.");
+        }
+    }
+    } else if ($prestigeThievingMenu = 2) {
+         ~chatnpc("<p,neutral>You will roll two success chances when woodcutting. Are you sure you wish to use your woodcutting prestige point?");
+        def_int $prestigeDoubleSuccess = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeDoubleSuccess = 1 & %prestigewoodcutting_2 = 0) {
+            if (%prestigepoint_woodcutting > 0) {
+            %prestigepoint_woodcutting = sub(%prestigepoint_woodcutting,1);
+            %prestigewoodcutting_2 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! You now roll two times when attempting to chop trees!");
+            mes("You now have <tostring(%prestigepoint_woodcutting)> Woodcutting prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough woodcutting prestige points.");
+            }
+        } else if ($prestigeDoubleSuccess = 1) {
+            ~chatnpc("<p,neutral>You already have this perk.");
+        } else if ($prestigeDoubleSuccess = 2) {
             @prestigemaster_miningmenu;
         }
     } else if ($prestigeThievingMenu = 3) {

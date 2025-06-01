@@ -110,11 +110,26 @@ if (%action_delay < map_clock) {
 
 p_oploc(3);
 
+[proc,prestige_doublelog](int $chance, namedobj $product)
+if (random(100) <= $chance) {
+    inv_add(inv, $product, 1);
+    inv_add(bank, $product, 1);
+    mes("You get some <lowercase(oc_name($product))>. An additional log is sent to the bank.");
+} else {
+    inv_add(inv, $product, 1);
+}
+return;
+
 [label,get_logs](dbrow $data, obj $axe)
 // get lows and highs
 def_int $tree_chance_low;
 def_int $tree_chance_high;
 $tree_chance_low, $tree_chance_high = ~woodcutting_successchance($data, $axe);
+def_boolean $success;
+$success = stat_random(woodcutting, $tree_chance_low, $tree_chance_high);
+if ($success = false & %prestigewoodcutting_2 = 1) {
+    $success = stat_random(woodcutting, $tree_chance_low, $tree_chance_high);
+}
 def_int $respawnrate = db_getfield($data, woodcutting_trees:respawnrate, 0);
 def_int $deplete_chance = 8; // 1/8 chance to deplete
 // if normal tree, add some variance
@@ -123,11 +138,20 @@ if ($respawnrate = 0) {
     $respawnrate = add(120, random(80));
     $deplete_chance = 0;
 }
-if (stat_random(woodcutting, $tree_chance_low, $tree_chance_high) = true) {
+if ($success = true) {
     def_namedobj $product = db_getfield($data, woodcutting_trees:product, 0);
-    mes("You get some <lowercase(oc_name($product))>.");
     stat_advance(woodcutting, db_getfield($data, woodcutting_trees:productexp, 0));
-    inv_add(inv, $product, 1);
+    if (%prestigewoodcutting_1 = 1) {
+        ~prestige_doublelog(49, $product);
+    } else if (%prestigewoodcutting_1 = 2) {
+        ~prestige_doublelog(74, $product);
+    } else if (%prestigewoodcutting_1 = 3) {
+        inv_add(inv, $product, 1);
+        inv_add(bank, $product, 1);
+        mes("You get some <lowercase(oc_name($product))>. An additional log is sent to the bank.");
+    } else {
+        inv_add(inv, $product, 1);
+    }
     if (%clue_skillingchance_perk = 1) {
         ~trail_skillingcluedrop(500, 3);
     } else {

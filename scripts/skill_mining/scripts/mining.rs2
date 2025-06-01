@@ -214,11 +214,13 @@ if ($data = null) {
 }
 if (%prestigemining_3 = 1) {
     inv_add(bank, db_getfield($data, mining_table:rock_output, 0), 1);
+    stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
+mes("You manage to mine an unbound rune stone. It's sent directly to your bank.");
 } else {
     inv_add(inv, db_getfield($data, mining_table:rock_output, 0), 1);
-}
-stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
+    stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
 mes("You manage to mine an unbound rune stone.");
+}
 p_oploc(3);
 
 

@@ -30,6 +30,11 @@ def_int $defence_roll = ~npc_defence_roll_specific($damagetype);
 if (randominc($attack_roll) > randominc($defence_roll)) {
     return(true);
 }
+if (%chosen_combat_style_buff = 1 & $damagetype <= ^crush_style) {
+    if (randominc($attack_roll) > randominc($defence_roll)) {
+        return(true);
+    }
+}
 return(false);
 
 // returns the correct combat calculated attack damage for weapon

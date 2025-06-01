@@ -153,7 +153,15 @@ if (npc_param(defend_sound) ! null) {
 
 p_opnpc(5);
 
-~ranged_dropammo_npc($ammo, 5, sub(divide($delay, 30), 2));
+if (%chosen_combat_style_buff = 2)
+    {
+        ~ranged_dropammo_npc($ammo, 0, sub(divide($delay, 30), 2));
+        return;
+    }
+    else {
+        ~ranged_dropammo_npc($ammo, 5, sub(divide($delay, 30), 2));
+    }
+
 
 if (random(2) = 0) {
     // There's some randomness here, this is a guess

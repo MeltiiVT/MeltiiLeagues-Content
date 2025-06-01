@@ -138,7 +138,6 @@ switch_category(oc_category($rhand)) {
 [proc,ranged_shoot_npc](obj $ammo)(int)
 if($ammo = ogre_arrow) spotanim_pl(oc_param($ammo, proj_launch), 50, 0);
 else spotanim_pl(oc_param($ammo, proj_launch), 96, 0);
-inv_del(worn, $ammo, 1);
 spotanim_pl(oc_param($ammo, proj_launch), 96, 0);
 if (%chosen_combat_style_buff = 2)
     {

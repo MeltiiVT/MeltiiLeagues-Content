@@ -40,6 +40,16 @@ sound_synth(%com_attacksound, 0, 0);
 // sound_synth(.%com_defendsound, 0, 20);
 
 def_obj $weapon = inv_getobj(worn, ^wearpos_rhand);
+if (%chosen_combat_style_buff = 1)
+    {if ($weapon = null) {
+        %action_delay = add(map_clock, 2);
+    } else {
+        %action_delay = add(map_clock, divide(oc_param($weapon, attackrate),2));
+        def_int $poison_severity = oc_param($weapon, poison_severity);
+        if ($damage > 0 & $poison_severity > 0 & random(4) = 0) { // 1/4 chance to poison
+            .queue(poison_player, 0, $poison_severity);
+        }
+    }} else 
 if ($weapon = null) {
     %action_delay = add(map_clock, 4);
 } else {

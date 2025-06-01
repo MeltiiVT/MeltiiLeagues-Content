@@ -45,7 +45,20 @@ sound_synth(%com_attacksound, 0, 0);
 .anim(.%com_defendanim, $delay);
 // .sound_synth(.%com_defendsound, 0, 20);
 // sound_synth(.%com_defendsound, 0, 20);
-
+if (%chosen_combat_style_buff = 2)
+    {if ($rhand = null) {
+        %action_delay = add(map_clock, 4);
+    } else {
+        if (%damagestyle = ^style_ranged_rapid) {
+            %action_delay = sub(%action_delay, 1);
+            }
+        %action_delay = add(map_clock, divide(oc_param($rhand, attackrate),2));
+        def_int $poison_severity = oc_param($ammo, poison_severity);
+        if ($damage > 0 & $poison_severity > 0 & random(4) = 0) { // 1/4 chance to poison
+            .queue(poison_player, 0, $poison_severity);
+        }
+    }
+    } else
 if ($rhand = null) {
     %action_delay = add(map_clock, 4);
 } else {
@@ -59,16 +72,29 @@ if (%damagestyle = ^style_ranged_rapid) {
     %action_delay = sub(%action_delay, 1);
 }
 
-~ranged_dropammo_pvp($ammo, 5, sub(divide($delay, 30), 2));
+if (%chosen_combat_style_buff = 2)
+    {
+        ~ranged_dropammo_pvp($ammo, 0, sub(divide($delay, 30), 2));
+        return;
+    }
+    else {
+        ~ranged_dropammo_pvp($ammo, 5, sub(divide($delay, 30), 2));
+    }
+
 
 
 [proc,pvp_ranged_use_weapon](obj $rhand, obj $ammo)(int)
 spotanim_pl(oc_param($ammo, proj_launch), 96, 0);
 if (~in_duel_arena(coord) = true) {
     inv_moveitem(worn, duelarrows, $ammo, 1); // give rangers their arrows back from duels
-} else {
+} else if (%chosen_combat_style_buff = 2)
+    {
+        if (random(10) = 0) { // 1 out of 10 chance
+        inv_del(worn, $ammo, 1);
+        }
+    } else {
     inv_del(worn, $ammo, 1);
-}
+    }
 def_int $delay = 30;
 switch_category(oc_category($rhand)) {
     case weapon_bow, weapon_crossbow :

@@ -699,11 +699,75 @@ if ($prestigeMagicMenu = 1) {
 }
 
 [label,prestigemaster_miningmenu]
-def_int $prestigeThievingMenu = ~p_choice3("Double Ore Mined", 1, "Mined Essence Is Banked", 2, "Go Back", 3);
+def_int $prestigeThievingMenu = ~p_choice4("Double Ore Mined Chance (<tostring(%prestigemining_1)>/3)", 1, "Double Success Rolls When Mining", 2, "Mined Essence Is Banked", 3, "Go Back", 4);
 
 if ($prestigeThievingMenu = 1) {
-        ~chatnpc("<p,neutral>This perk is not yet available, sorry.");
+    if (%prestigemining_1 = 0) {
+        ~chatnpc("<p,neutral>You'll have a 50% chance to receive an extra ore in your bank when mining.| Are you sure you wish to use your mining prestige point?");
+        def_int $prestigeDoubleOre = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeDoubleOre = 1) {
+            if (%prestigepoint_mining > 0) {
+            %prestigepoint_mining = sub(%prestigepoint_mining,1);
+            %prestigemining_1 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! You now have a 50% chance to receive an extra ore while mining!");
+            mes("You now have <tostring(%prestigepoint_mining)> Mining prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough mining prestige points.");
+            }
+        } else if ($prestigeDoubleOre = 2) {
+            @prestigemaster_miningmenu;
+        }
+    } else if (%prestigemining_1 = 1) {
+        ~chatnpc("<p,neutral>You'll have a 75% chance to receive an extra ore in your bank when mining.| Are you sure you wish to use your mining prestige point?");
+        def_int $prestigeDoubleOre = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeDoubleOre = 1) {
+            if (%prestigepoint_mining > 0) {
+            %prestigepoint_mining = sub(%prestigepoint_mining,1);
+            %prestigemining_1 = 2;
+            ~chatnpc("<p,neutral>Perk unlocked! You now have a 75% chance to receive an extra ore while mining!");
+            mes("You now have <tostring(%prestigepoint_mining)> Mining prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough mining prestige points.");
+            }
+        } else if ($prestigeDoubleOre = 2) {
+            @prestigemaster_miningmenu;
+        }
+    } else if (%prestigemining_1 = 2) {
+        ~chatnpc("<p,neutral>You'll have a 100% chance to receive an extra ore in your bank when mining.| Are you sure you wish to use your mining prestige point?");
+        def_int $prestigeDoubleOre = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeDoubleOre = 1) {
+            if (%prestigepoint_mining > 0) {
+            %prestigepoint_mining = sub(%prestigepoint_mining,1);
+            %prestigemining_1 = 3;
+            ~chatnpc("<p,neutral>Perk unlocked! You now have a 100% chance to receive an extra ore while mining!");
+            mes("You now have <tostring(%prestigepoint_mining)> Mining prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough mining prestige points.");
+            }
+        } else if ($prestigeDoubleOre = 2) {
+            @prestigemaster_miningmenu;
+        }
+        } else if (%prestigemining_1 = 3) {
+            ~chatnpc("<p,neutral>This perk is fully upgraded.");
+        }
     } else if ($prestigeThievingMenu = 2) {
+         ~chatnpc("<p,neutral>This will give you double success rolls when mining. Are you sure you wish to use your mining prestige point?");
+        def_int $prestigeBankedEss = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeBankedEss = 1 & %prestigemining_2 = 0) {
+            if (%prestigepoint_mining > 0) {
+            %prestigepoint_mining = sub(%prestigepoint_mining,1);
+            %prestigemining_2 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! You now have double success rolls when mining.");
+            mes("You now have <tostring(%prestigepoint_mining)> Mining prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough mining prestige points.");
+            }
+        } else if ($prestigeBankedEss = 1) {
+            ~chatnpc("<p,neutral>You already have this perk.");
+        } else if ($prestigeBankedEss = 2) {
+            @prestigemaster_miningmenu;
+        }
+    } else if ($prestigeThievingMenu = 3) {
          ~chatnpc("<p,neutral>This will make all essence mined go directly to your bank. Are you sure you wish to use your mining prestige point?");
         def_int $prestigeBankedEss = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
         if ($prestigeBankedEss = 1 & %prestigemining_3 = 0) {
@@ -720,12 +784,13 @@ if ($prestigeThievingMenu = 1) {
         } else if ($prestigeBankedEss = 2) {
             @prestigemaster_miningmenu;
         }
-    } else if ($prestigeThievingMenu = 3) {
+    } else if ($prestigeThievingMenu = 4) {
         @prestigemaster_skillsmenu;
 }
 
+
 [label,prestigemaster_woodcuttingmenu]
-def_int $prestigeThievingMenu = ~p_choice3("Double Wood Chopped (<tostring(%prestigewoodcutting_1)>/3)", 1, "Double Success Rolls", 2, "Go Back", 3);
+def_int $prestigeThievingMenu = ~p_choice3("Double Wood Chopped Chance (<tostring(%prestigewoodcutting_1)>/3)", 1, "Double Success Rolls", 2, "Go Back", 3);
 
 if ($prestigeThievingMenu = 1) {
     if (%prestigewoodcutting_1 = 0) {
@@ -772,7 +837,7 @@ if ($prestigeThievingMenu = 1) {
             }
         } else if ($prestigeDoubleWood = 2) {
             @prestigemaster_miningmenu;
-        } else if ($prestigeDoubleWood = 3) {
+        } else if (%prestigewoodcutting_1 = 3) {
             ~chatnpc("<p,neutral>This perk is fully upgraded.");
         }
     }

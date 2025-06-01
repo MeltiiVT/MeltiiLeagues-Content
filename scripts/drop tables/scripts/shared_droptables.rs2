@@ -33,6 +33,40 @@ if ($random < 32) {
     return (unidentified_dwarf_weed, 1);
 }
 
+[proc,randomherb_noted]()(namedobj, int)
+
+if(map_members = ^false) {
+    return (coins, 10);
+}
+
+def_int $random = 0;
+
+$random = random(128);
+
+if ($random < 32) {
+    return (cert_unidentified_guam, 1);
+} else if ($random < 56) {
+    return (cert_unidentified_marrentill, 1);
+} else if ($random < 74) {
+    return (cert_unidentified_tarromin, 1);
+} else if ($random < 88) {
+    return (cert_unidentified_harralander, 1);
+} else if ($random < 99) {
+    return (cert_unidentified_ranarr, 1);
+} else if ($random < 107) {
+    return (cert_unidentified_irit, 1);
+} else if ($random < 113) {
+    return (cert_unidentified_avantoe, 1);
+} else if ($random < 118) {
+    return (cert_unidentified_kwuarm, 1);
+} else if ($random < 122) {
+    return (cert_unidentified_cadantine, 1);
+} else if ($random < 125) {
+    return (cert_unidentified_lantadyme, 1);
+} else if ($random < 128) {
+    return (cert_unidentified_dwarf_weed, 1);
+}
+
 // Name leaked
 [proc,randomjewel]()(namedobj, int)
 def_int $random = 0;

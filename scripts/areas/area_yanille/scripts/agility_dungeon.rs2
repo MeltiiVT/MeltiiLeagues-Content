@@ -100,12 +100,21 @@ if(last_useitem = sinister_key) {
     }
     mes("You find a lot of herbs in the chest...");
     inv_del(inv, sinister_key, 1);
+    if (%prestigeattack_3 = 1) {
+    inv_add(inv, cert_unidentified_harralander, 2);
+    inv_add(inv, cert_unidentified_ranarr, 3);
+    inv_add(inv, cert_unidentified_irit, 1);
+    inv_add(inv, cert_unidentified_avantoe, 1);
+    inv_add(inv, cert_unidentified_kwuarm, 1);
+    inv_add(inv, cert_unidentified_torstol, 1);
+    } else {
     inv_add(inv, unidentified_harralander, 2);
     inv_add(inv, unidentified_ranarr, 3);
     inv_add(inv, unidentified_irit, 1);
     inv_add(inv, unidentified_avantoe, 1);
     inv_add(inv, unidentified_kwuarm, 1);
     inv_add(inv, unidentified_torstol, 1);
+    }
     // Temp note: dur updated
     loc_change(chestopen_inactive, 5);
     return;

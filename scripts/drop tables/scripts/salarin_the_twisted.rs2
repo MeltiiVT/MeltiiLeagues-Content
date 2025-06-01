@@ -30,10 +30,17 @@ if ($random < 1) {
 } else if ($random < 12) {
     obj_add(npc_coord, firerune, 36, ^lootdrop_duration);
 } else if ($random < 51) {
-    if (%prestigestrength_3 = 1) {
+    if (%prestigeattack_3 = 1) {
+        if (%prestigestrength_3 = 1) {
+            obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+    }
+        obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+    } else {
+        if (%prestigestrength_3 = 1) {
+            obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
+        }
         obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
     }
-    obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
 } else if ($random < 56) {
     obj_add(npc_coord, white_berries, 1, ^lootdrop_duration);
 } else if ($random < 57) {

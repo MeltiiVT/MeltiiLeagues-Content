@@ -25,17 +25,33 @@ if ($random < 7)  {
 } else if ($random < 17) {
     obj_add(npc_coord, naturerune, 3, ^lootdrop_duration);
 } else if ($random < 52) {
-    if (%prestigestrength_3 = 1) {
+    if (%prestigeattack_3 = 1) {
+        if (%prestigestrength_3 = 1) {
+            obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+    }
+        obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+    } else {
+        if (%prestigestrength_3 = 1) {
+            obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
+        }
         obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
     }
-    obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
 } else if ($random < 63) {
-    if (%prestigestrength_3 = 1) {
+    if (%prestigeattack_3 = 1) {
+        if (%prestigestrength_3 = 1) {
+            obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+            obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+    }
+        obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+        obj_add(npc_coord, ~randomherb_noted, ^lootdrop_duration);
+    } else {
+        if (%prestigestrength_3 = 1) {
+            obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
+            obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
+        }
         obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
         obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
     }
-    obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
-    obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
 } else if ($random < 68) {
     obj_add(npc_coord, coins, 3, ^lootdrop_duration);
 } else if ($random < 73) {

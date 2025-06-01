@@ -566,7 +566,7 @@ if ($prestigeSkillsMenu = 1) {
 def_int $prestigeCombatSkillsMenu = ~p_choice5("Attack", 1, "Strength", 2, "Defence", 3, "Ranged", 4, "More Options", 5);
 
 if ($prestigeCombatSkillsMenu = 1) {
-        ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
+        @prestigemaster_attackmenu;
     } else if ($prestigeCombatSkillsMenu = 2) {
         @prestigemaster_strengthmenu;
     } else if ($prestigeCombatSkillsMenu = 3) {
@@ -643,6 +643,32 @@ if ($prestigeMiscSkillsMenu = 1) {
     } else if ($prestigeMiscSkillsMenu = 3) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeMiscSkillsMenu = 4) {
+        @prestigemaster_skillsmenu;
+}
+
+[label,prestigemaster_attackmenu]
+def_int $prestigeAttackMenu = ~p_choice3("Melee Accuracy Increase", 1, "Noted Herb Drops", 2, "Go Back", 3);
+
+if ($prestigeAttackMenu = 1) {
+        ~chatnpc("<p,neutral>This perk is not yet available, sorry.");
+    } else if ($prestigeAttackMenu = 2) {
+          ~chatnpc("<p,neutral>This perk will make chaos druids, chaos druid warriors, and salarin drop noted herbs. Salarin's chest will now give noted herbs.| Are you sure you wish to use your Attack prestige point?");
+        def_int $prestigeAttackNotedHerbs = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeAttackNotedHerbs = 1 & %prestigeattack_3 = 0) {
+            if (%prestigepoint_attack > 0) {
+            %prestigepoint_attack = sub(%prestigepoint_attack,1);
+            %prestigeattack_3 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! Herb drops are now noted from all chaos druids, chaos druid warriors, and salarin. Salarins chest now gives noted herbs.");
+            mes("You now have <tostring(%prestigepoint_attack)> Attack prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough Attack prestige points.");
+            }
+        } else if ($prestigeAttackNotedHerbs = 1) {
+            ~chatnpc("<p,neutral>You already have this perk.");
+        } else if ($prestigeAttackNotedHerbs = 2) {
+            @prestigemaster_attackmenu;
+        }
+    } else if ($prestigeAttackMenu = 3) {
         @prestigemaster_skillsmenu;
 }
 

@@ -10,7 +10,7 @@ switch_int(%tutorial_progress) {
 [label,runescape_guide_welcome]
     ~chatnpc("<p,neutral>Greetings! Before we begin with the main tutorial, you have an important choice.");
     ~chatnpc("<p,neutral>You can select a preferred combat style. This choice is permanent, but you will be able to obtain the others far later.");
-    ~chatnpc("<p,neutral>Melee combat will see it's attack speed cut in half. You will also have 3x passive Hitpoints regenartion.");
+    ~chatnpc("<p,neutral>Melee combat will see it's attack speed cut in half. You will also have 2x passive Hitpoints regenartion and double accuracy rolls on all melee attacks.");
     ~chatnpc("<p,neutral>Ranged combat will see it's attack speed cut in half, and will consume 90% less ammunition. Your ammo will no longer drop to the floor.");
     ~chatnpc("<p,neutral>Magic combat will see it's attack speed cut in half, and will consume 90% less runes.");
     ~chatnpc("<p,neutral>Please choose wisely, as this cannot be reverted.");

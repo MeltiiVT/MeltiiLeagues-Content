@@ -568,7 +568,7 @@ def_int $prestigeCombatSkillsMenu = ~p_choice5("Attack", 1, "Strength", 2, "Defe
 if ($prestigeCombatSkillsMenu = 1) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeCombatSkillsMenu = 2) {
-        ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
+        @prestigemaster_strengthmenu;
     } else if ($prestigeCombatSkillsMenu = 3) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeCombatSkillsMenu = 4) {
@@ -643,6 +643,32 @@ if ($prestigeMiscSkillsMenu = 1) {
     } else if ($prestigeMiscSkillsMenu = 3) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeMiscSkillsMenu = 4) {
+        @prestigemaster_skillsmenu;
+}
+
+[label,prestigemaster_strengthmenu]
+def_int $prestigeStrengthMenu = ~p_choice3("Melee Strength Increase", 1, "Double Herb Drops", 2, "Go Back", 3);
+
+if ($prestigeStrengthMenu = 1) {
+        ~chatnpc("<p,neutral>This perk is not yet available, sorry.");
+    } else if ($prestigeStrengthMenu = 2) {
+          ~chatnpc("<p,neutral>This perk will make chaos druids, chaos druid warriors, and salarin drop double herbs. Salarin will also drop double keys.| Are you sure you wish to use your Strength prestige point?");
+        def_int $prestigeStrengthDoubleHerbs = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeStrengthDoubleHerbs = 1 & %prestigestrength_3 = 0) {
+            if (%prestigepoint_strength > 0) {
+            %prestigepoint_strength = sub(%prestigepoint_strength,1);
+            %prestigestrength_3 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! Herb drops are now doubled from all chaos druids, chaos druid warriors, and salarin. Salarin now drops double keys.");
+            mes("You now have <tostring(%prestigepoint_strength)> Strength prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough Strength prestige points.");
+            }
+        } else if ($prestigeStrengthDoubleHerbs = 1) {
+            ~chatnpc("<p,neutral>You already have this perk.");
+        } else if ($prestigeStrengthDoubleHerbs = 2) {
+            @prestigemaster_strengthmenu;
+        }
+    } else if ($prestigeStrengthMenu = 3) {
         @prestigemaster_skillsmenu;
 }
 

@@ -25,8 +25,15 @@ if ($random < 1) {
 } else if ($random < 14) {
     obj_add(npc_coord, naturerune, 3, ^lootdrop_duration);
 } else if ($random < 48) {
+    if (%prestigestrength_3 = 1) {
+        obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
+    }
     obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
 } else if ($random < 58) {
+    if (%prestigestrength_3 = 1) {
+        obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
+        obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
+    }
     obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
     obj_add(npc_coord, ~randomherb, ^lootdrop_duration);
 } else if ($random < 63) {

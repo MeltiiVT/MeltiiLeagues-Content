@@ -212,7 +212,11 @@ if ($data = null) {
     ~displaymessage(^dm_default);
     return;
 }
-inv_add(inv, db_getfield($data, mining_table:rock_output, 0), 1);
+if (%prestigemining_3 = 1) {
+    inv_add(bank, db_getfield($data, mining_table:rock_output, 0), 1);
+} else {
+    inv_add(inv, db_getfield($data, mining_table:rock_output, 0), 1);
+}
 stat_advance(mining, db_getfield($data, mining_table:rock_exp, 0));
 mes("You manage to mine an unbound rune stone.");
 p_oploc(3);

@@ -624,7 +624,7 @@ if ($prestigeProcessingSkillsMenu2 = 1) {
 def_int $prestigeGatheringSkillsMenu = ~p_choice4("Mining", 1, "Fishing", 2, "Woodcutting", 3, "Go Back", 4);
 
 if ($prestigeGatheringSkillsMenu = 1) {
-        ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
+        @prestigemaster_miningmenu;
     } else if ($prestigeGatheringSkillsMenu = 2) {
         ~chatnpc("<p,neutral>There are currently no available prestiges for this skill.");
     } else if ($prestigeGatheringSkillsMenu = 3) {
@@ -685,7 +685,7 @@ if ($prestigeMagicMenu = 1) {
             %prestigepoint_magic = sub(%prestigepoint_magic,1);
             %prestigemagic_3 = 1;
             ~chatnpc("<p,neutral>Perk unlocked! You can now tan hides with the Superheat spell.");
-            mes("You now have <tostring(%prestigepoint_magic)> Ranged prestige points remaining.");
+            mes("You now have <tostring(%prestigepoint_magic)> Magic prestige points remaining.");
             } else {
                 ~chatnpc("<p,neutral>You do not have enough Magic prestige points.");
             }
@@ -695,6 +695,32 @@ if ($prestigeMagicMenu = 1) {
             @prestigemaster_magicmenu;
         }
     } else if ($prestigeMagicMenu = 3) {
+        @prestigemaster_skillsmenu;
+}
+
+[label,prestigemaster_miningmenu]
+def_int $prestigeThievingMenu = ~p_choice3("Double Ore Mined", 1, "Mined Essence Is Banked", 2, "Go Back", 3);
+
+if ($prestigeThievingMenu = 1) {
+        ~chatnpc("<p,neutral>This perk is not yet available, sorry.");
+    } else if ($prestigeThievingMenu = 2) {
+         ~chatnpc("<p,neutral>This will make all essence mined go directly to your bank. Are you sure you wish to use your mining prestige point?");
+        def_int $prestigeBankedEss = ~p_choice2("Yes - Upgrade Skill", 1, "No - Go Back", 2);
+        if ($prestigeBankedEss = 1 & %prestigemining_3 = 0) {
+            if (%prestigepoint_mining > 0) {
+            %prestigepoint_mining = sub(%prestigepoint_mining,1);
+            %prestigemining_3 = 1;
+            ~chatnpc("<p,neutral>Perk unlocked! You will now receive double loot from thieving..");
+            mes("You now have <tostring(%prestigepoint_mining)> Mining prestige points remaining.");
+            } else {
+                ~chatnpc("<p,neutral>You do not have enough mining prestige points.");
+            }
+        } else if ($prestigeBankedEss = 1) {
+            ~chatnpc("<p,neutral>You already have this perk.");
+        } else if ($prestigeBankedEss = 2) {
+            @prestigemaster_miningmenu;
+        }
+    } else if ($prestigeThievingMenu = 3) {
         @prestigemaster_skillsmenu;
 }
 
@@ -711,7 +737,7 @@ if ($prestigeThievingMenu = 1) {
             %prestigepoint_thieving = sub(%prestigepoint_thieving,1);
             %prestigethieving_2 = 1;
             ~chatnpc("<p,neutral>Perk unlocked! You will now receive double loot from thieving..");
-            mes("You now have <tostring(%prestigepoint_thieving)> Ranged prestige points remaining.");
+            mes("You now have <tostring(%prestigepoint_thieving)> Mining prestige points remaining.");
             } else {
                 ~chatnpc("<p,neutral>You do not have enough thieving prestige points.");
             }

@@ -14,6 +14,7 @@ switch_obj (last_useitem)
 };
 
 [label,craft_spinning](obj $spinning_obj)
+def_int $count = inv_total(inv, $spinning_obj);
 def_struct $struct = oc_param($spinning_obj, crafting_spinning_struct);
 // check if we have the required level
 def_int $level = struct_param($struct, levelrequire);
@@ -34,6 +35,11 @@ inv_del(inv, struct_param($struct, ingredient), 1);
 inv_add(inv, struct_param($struct, product), 1);
 mes(struct_param($struct, processmessage));
 stat_advance(crafting, struct_param($struct, productexp));
+p_delay(0);
+if ($count < 1) {
+    return;
+}
+@craft_spinning($spinning_obj);
 //weakqueue(crafting_spinning, 2, $struct);
 
 /**

@@ -36,6 +36,7 @@ inv_add(inv, struct_param($struct, product), 1);
 mes(struct_param($struct, processmessage));
 stat_advance(crafting, struct_param($struct, productexp));
 p_delay(0);
+$count = sub($count,1);
 if ($count < 1) {
     return;
 }
